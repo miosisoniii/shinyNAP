@@ -1,4 +1,6 @@
 .Rproj.user/**
+.Rproj.user
+>>>>>>> showhide_prot
 .Rhistory
 .RData
 .Ruserdata
