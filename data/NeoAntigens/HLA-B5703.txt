@@ -1,7 +1,7 @@
 # /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/bin/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt -a HLA-B5703
-# Fri Nov 16 15:14:52 2018
+# Sun Nov 18 22:31:53 2018
 # User: artemiosisoniii
-# PWD : /Users/artemiosisoniii/shinyNAP_topub
+# PWD : /Users/artemiosisoniii/shinyNAP
 # -f       data/NeoAntigens/wt_v_mut_netmhc.txt Input file (by default in FASTA format)
 # -a       HLA-B5703            HLA allele name
 # Command line parameters set to:

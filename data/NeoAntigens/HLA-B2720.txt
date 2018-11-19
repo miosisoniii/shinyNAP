@@ -1,7 +1,7 @@
 # /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/bin/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt -a HLA-B2720
-# Fri Nov 16 15:14:50 2018
+# Sun Nov 18 22:31:51 2018
 # User: artemiosisoniii
-# PWD : /Users/artemiosisoniii/shinyNAP_topub
+# PWD : /Users/artemiosisoniii/shinyNAP
 # -f       data/NeoAntigens/wt_v_mut_netmhc.txt Input file (by default in FASTA format)
 # -a       HLA-B2720            HLA allele name
 # Command line parameters set to:
@@ -49,7 +49,7 @@ Protein WT1_1. Allele HLA-B2720. Number of high binders 0. Number of weak binder
 -----------------------------------------------------------------------------------
   pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
 -----------------------------------------------------------------------------------
-    0    HLA-B2720    YLLDSSGML    YLLDSSGML      0      0      0      0      0    YLLDSSGML       Mutant1_2         0.267      2790.91     1.70 <=WB
+    0    HLA-B2720    YLLDSSGML    YLLDSSGML      0      0      0      0      0    YLLDSSGML       Mutant1_2         0.267      2790.91     1.70 <= WB
 -----------------------------------------------------------------------------------
 
 Protein Mutant1_2. Allele HLA-B2720. Number of high binders 0. Number of weak binders 1. Number of peptides 1

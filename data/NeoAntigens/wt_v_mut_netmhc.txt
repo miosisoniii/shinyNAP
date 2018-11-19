@@ -1,0 +1,4 @@
+>WT1_1
+CLLDSSGML
+>Mutant1_2
+YLLDSSGML
