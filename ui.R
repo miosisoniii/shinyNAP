@@ -1,35 +1,6 @@
 source("global.R")
 
 ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
-                 # tabPanel("Search NeoAntigen",
-                 #          fluidPage(
-                 #            titlePanel("Search"),
-                 #            sidebarLayout(
-                 #              sidebarPanel(width = 3,
-                 #                           # textInput("WT_text_in", "Wild Type Sequence:", "CLLDSSGML"),
-                 #                           # textInput("MUT_text_in", "Mutant Sequence:", "YLLDSSGML"),
-                 #                           #actionButton("create_peptable", "Create Peptide Table"),
-                 #                           br(),
-                 #                           actionButton("create_neosearchfile", "Create NeoAntigen Library Searchfile"),
-                 #                           br(),
-                 #                           actionButton("netmhc_neo", "Run netMHC"),
-                 #                           br(),
-                 #                           actionButton("process_neodata", "Process Data")
-                 #              ),
-                 #              mainPanel(width = 9,
-                 #                        #renderTable("pep_table"),
-                 #                        textOutput("searchfile_pep"),
-                 #                        br(),
-                 #                        textOutput("pepnetmhc_complete"),
-                 #                        plotlyOutput("plot_pep_out"),
-                 #                        br(),
-                 #                        #tableOutput("pep_out"),
-                 #                        tableOutput("HLAneo_prop_out")
-                 # 
-                 #              )
-                 #            )
-                 #          )
-                 # ),
                  tabPanel("Custom NeoAntigen",
                           fluidPage(
                             titlePanel("Custom NeoAntigen"),
@@ -79,10 +50,20 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                             titlePanel("Run netMHC on Protein"),
                             sidebarLayout(
                               sidebarPanel(width = 3,
+                                           useShinyjs(),
+                                           
+                                           radioButtons("prot_lib_cust_radio", "Library or Custom?",
+                                                        c("Library Search" = "prot_library",
+                                                          "Enter your own sequence" = "prot_custom"),
+                                                        selected = "prot_library"
+                                           ),
+                                           
                                            selectInput(inputId = 'selectgene',
                                                        label = 'Select Gene to Analyze',
                                                        choices = gene_seq_df$gene,
                                                        selected = "MYCN"),
+                                           
+                                           
                                            textInput("name_textinput", "Enter gene/protein name:", paste(gene_seq_df$gene[2])),
                                            textInput("geneseq_textinput", "Enter amino acid sequence:", paste(gene_seq_df$seq[2])),
                                            actionButton("create_searchfile", "Create Searchfile"),
