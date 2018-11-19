@@ -278,4 +278,20 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 [1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hf ggtg git add .[?1l>[?2004l
-]2;git add .]1;git
+]2;git add .]1;git[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ●✚ [49m[33m[39m [K[?1h=[?2004hggit commit -m a "added Rproj files[?1l>[?2004l
+[0m[27m[24m[Jdquote> [K[?1h=[?2004h"[?1l>[?2004l
+]2;git commit -m "added Rproj files "]1;git[master 6a3eb46] added Rproj files
+ 1 file changed, 16 insertions(+)
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit status[?1l>[?2004l
+]2;git status]1;gitOn branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/F1376152/console06/1262E85E[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit add .Rproj.user[1m/[0m[0m/F1376152[1m/[0m[0m/console06[1m/[0m[K6[0m/1262E85E[1m [0m[0m [?1l>[?2004l
