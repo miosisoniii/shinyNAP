@@ -1,0 +1,122 @@
+]0;~/shinyNAP[?1034hArtemios-MBP:shinyNAP artemiosisoniii$ [KArtemios-MBP:shinyNAP artemiosisoniii$ [KArtemios-MBP:shinyNAP artemiosisoniii$ [KArtemios-MBP:shinyNAP artemiosisoniii$ zsh
+[1m[7m%[27m[1m[0m                                                                                          ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hlls -l[?1l>[?2004l
+]2;ls -G -l]1;lstotal 104
+-rw-r--r--   1 artemiosisoniii  staff     11 Nov 18 22:27 README.md
+drwxr-xr-x  12 artemiosisoniii  staff    384 Nov 18 14:32 [1m[36mdata[39;49m[0m
+-rwxr-xr-x   1 artemiosisoniii  staff   5251 Nov 18 14:32 [31mglobal.R[39;49m[0m
+-rwxr-xr-x   1 artemiosisoniii  staff  25343 Nov 18 14:32 [31mserver.R[39;49m[0m
+-rw-r--r--   1 artemiosisoniii  staff    205 Nov 18 22:33 shinyNAP.Rproj
+-rwxr-xr-x   1 artemiosisoniii  staff   6770 Nov 18 14:32 [31mui.R[39;49m[0m
+drwxr-xr-x   5 artemiosisoniii  staff    160 Nov 18 14:23 [1m[36mwww[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                          ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit remote -v[?1l>[?2004l
+]2;git remote -v]1;gitorigin	https://github.com/miosisoniii/shinyNAP.git (fetch)
+origin	https://github.com/miosisoniii/shinyNAP.git (push)
+[1m[7m%[27m[1m[0m                                                                                          ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hlls -l[?1l>[?2004l
+]2;ls -G -l]1;lstotal 104
+-rw-r--r--   1 artemiosisoniii  staff     11 Nov 18 22:27 README.md
+drwxr-xr-x  12 artemiosisoniii  staff    384 Nov 18 14:32 [1m[36mdata[39;49m[0m
+-rwxr-xr-x   1 artemiosisoniii  staff   5251 Nov 18 14:32 [31mglobal.R[39;49m[0m
+-rwxr-xr-x   1 artemiosisoniii  staff  25343 Nov 18 14:32 [31mserver.R[39;49m[0m
+-rw-r--r--   1 artemiosisoniii  staff    205 Nov 18 22:33 shinyNAP.Rproj
+-rwxr-xr-x   1 artemiosisoniii  staff   6770 Nov 18 14:32 [31mui.R[39;49m[0m
+drwxr-xr-x   5 artemiosisoniii  staff    160 Nov 18 14:23 [1m[36mwww[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                          ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004h[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m ggit checkout -bn  showhide prot    _prot[?1l>[?2004l
+]2;git checkout -b showhide_prot]1;gitM	data/NeoAntigens/HLA-A0101.txt
+M	data/NeoAntigens/HLA-A0201.txt
+M	data/NeoAntigens/HLA-A0202.txt
+M	data/NeoAntigens/HLA-A0203.txt
+M	data/NeoAntigens/HLA-A0205.txt
+M	data/NeoAntigens/HLA-A0206.txt
+M	data/NeoAntigens/HLA-A0207.txt
+M	data/NeoAntigens/HLA-A0211.txt
+M	data/NeoAntigens/HLA-A0212.txt
+M	data/NeoAntigens/HLA-A0216.txt
+M	data/NeoAntigens/HLA-A0217.txt
+M	data/NeoAntigens/HLA-A0219.txt
+M	data/NeoAntigens/HLA-A0301.txt
+M	data/NeoAntigens/HLA-A0302.txt
+M	data/NeoAntigens/HLA-A1101.txt
+M	data/NeoAntigens/HLA-A2301.txt
+M	data/NeoAntigens/HLA-A2402.txt
+M	data/NeoAntigens/HLA-A2403.txt
+M	data/NeoAntigens/HLA-A2501.txt
+M	data/NeoAntigens/HLA-A2601.txt
+M	data/NeoAntigens/HLA-A2602.txt
+M	data/NeoAntigens/HLA-A2603.txt
+M	data/NeoAntigens/HLA-A2902.txt
+M	data/NeoAntigens/HLA-A3001.txt
+M	data/NeoAntigens/HLA-A3002.txt
+M	data/NeoAntigens/HLA-A3101.txt
+M	data/NeoAntigens/HLA-A3201.txt
+M	data/NeoAntigens/HLA-A3207.txt
+M	data/NeoAntigens/HLA-A3301.txt
+M	data/NeoAntigens/HLA-A6601.txt
+M	data/NeoAntigens/HLA-A6801.txt
+M	data/NeoAntigens/HLA-A6802.txt
+M	data/NeoAntigens/HLA-A6823.txt
+M	data/NeoAntigens/HLA-A6901.txt
+M	data/NeoAntigens/HLA-A8001.txt
+M	data/NeoAntigens/HLA-B0702.txt
+M	data/NeoAntigens/HLA-B0801.txt
+M	data/NeoAntigens/HLA-B0802.txt
+M	data/NeoAntigens/HLA-B0803.txt
+M	data/NeoAntigens/HLA-B1401.txt
+M	data/NeoAntigens/HLA-B1402.txt
+M	data/NeoAntigens/HLA-B1501.txt
+M	data/NeoAntigens/HLA-B1502.txt
+M	data/NeoAntigens/HLA-B1503.txt
+M	data/NeoAntigens/HLA-B1509.txt
+M	data/NeoAntigens/HLA-B1517.txt
+M	data/NeoAntigens/HLA-B1801.txt
+M	data/NeoAntigens/HLA-B2705.txt
+M	data/NeoAntigens/HLA-B2720.txt
+M	data/NeoAntigens/HLA-B3501.txt
+M	data/NeoAntigens/HLA-B3503.txt
+M	data/NeoAntigens/HLA-B3701.txt
+M	data/NeoAntigens/HLA-B3801.txt
+M	data/NeoAntigens/HLA-B3901.txt
+M	data/NeoAntigens/HLA-B4001.txt
+M	data/NeoAntigens/HLA-B4002.txt
+M	data/NeoAntigens/HLA-B4013.txt
+M	data/NeoAntigens/HLA-B4201.txt
+M	data/NeoAntigens/HLA-B4402.txt
+M	data/NeoAntigens/HLA-B4403.txt
+M	data/NeoAntigens/HLA-B4501.txt
+M	data/NeoAntigens/HLA-B4506.txt
+M	data/NeoAntigens/HLA-B4601.txt
+M	data/NeoAntigens/HLA-B4801.txt
+M	data/NeoAntigens/HLA-B5101.txt
+M	data/NeoAntigens/HLA-B5301.txt
+M	data/NeoAntigens/HLA-B5401.txt
+M	data/NeoAntigens/HLA-B5701.txt
+M	data/NeoAntigens/HLA-B5703.txt
+M	data/NeoAntigens/HLA-B5801.txt
+M	data/NeoAntigens/HLA-B5802.txt
+M	data/NeoAntigens/HLA-B7301.txt
+M	data/NeoAntigens/HLA-B8101.txt
+M	data/NeoAntigens/HLA-B8301.txt
+M	data/NeoAntigens/HLA-C0303.txt
+M	data/NeoAntigens/HLA-C0401.txt
+M	data/NeoAntigens/HLA-C0501.txt
+M	data/NeoAntigens/HLA-C0602.txt
+M	data/NeoAntigens/HLA-C0701.txt
+M	data/NeoAntigens/HLA-C0702.txt
+M	data/NeoAntigens/HLA-C0802.txt
+M	data/NeoAntigens/HLA-C1203.txt
+M	data/NeoAntigens/HLA-C1402.txt
+M	data/NeoAntigens/HLA-C1502.txt
+M	data/NeoAntigens/wt_v_mut_netmhc.txt
+M	ui.R
+Switched to a new branch 'showhide_prot'
+[1m[7m%[27m[1m[0m                                                                                                                  ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  showhide_prot ● [49m[33m[39m [K[?1h=[?2004hll s-l[?1l>[?2004l
+]2;ls -G -lah s-l]1;lls: s-l: No such file or directory
+[1m[7m%[27m[1m[0m                                                                                                                  ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m [31m✘[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  showhide_prot ● [49m[33m[39m [K[?1h=[?2004hll ls -l[?1l>[?2004l
+]2;ls -G -l]1;lstotal 104
+-rw-r--r--   1 artemiosisoniii  staff     11 Nov 18 22:27 README.md
+drwxr-xr-x  12 artemiosisoniii  staff    384 Nov 18 14:32 [1m[36mdata[39;49m[0m
+-rwxr-xr-x   1 artemiosisoniii  staff   5251 Nov 18 14:32 [31mglobal.R[39;49m[0m
+-rwxr-xr-x   1 artemiosisoniii  staff  25343 Nov 18 14:32 [31mserver.R[39;49m[0m
+-rw-r--r--   1 artemiosisoniii  staff    205 Nov 18 22:33 shinyNAP.Rproj
+-rwxr-xr-x   1 artemiosisoniii  staff   5005 Nov 18 22:39 [31mui.R[39;49m[0m
+drwxr-xr-x   5 artemiosisoniii  staff    160 Nov 18 14:23 [1m[36mwww[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                  ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  showhide_prot ● [49m[33m[39m [K[?1h=[?2004h[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  showhide_prot ● [49m[33m[39m [0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ●✚ [49m[33m[39m 

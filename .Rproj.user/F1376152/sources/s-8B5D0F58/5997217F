@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1542599152048.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3559451954",
+    "id" : "5997217F",
+    "lastKnownWriteTime" : 1542569544,
+    "last_content_update" : 1542569544,
+    "path" : "~/shinyNAP/global.R",
+    "project_path" : "global.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

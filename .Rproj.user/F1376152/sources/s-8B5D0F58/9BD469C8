@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1542598549469.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9BD469C8",
+    "lastKnownWriteTime" : 1542599891,
+    "last_content_update" : 1542599891,
+    "path" : "~/shinyNAP/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+        "cursorPosition" : "380,30",
+        "scrollLine" : "341",
+        "source_window_id" : "wskqpf4l3q3sr"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
