@@ -295,3 +295,60 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 [1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit add .Rproj.user[1m/[0m[0m/F1376152[1m/[0m[0m/console06[1m/[0m[K6[0m/1262E85E[1m [0m[0m [?1l>[?2004l
+]2;git add .Rproj.user/F1376152/console06/1262E85E]1;git[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ●✚ [49m[33m[39m [K[?1h=[?2004hggit ps ush[?1l>[?2004l
+]2;git push]1;gitCounting objects: 17, done.
+Delta compression using up to 8 threads.
+Compressing objects:   5% (1/17)   Compressing objects:  11% (2/17)   Compressing objects:  17% (3/17)   Compressing objects:  23% (4/17)   Compressing objects:  29% (5/17)   Compressing objects:  35% (6/17)   Compressing objects:  41% (7/17)   Compressing objects:  47% (8/17)   Compressing objects:  52% (9/17)   Compressing objects:  58% (10/17)   Compressing objects:  64% (11/17)   Compressing objects:  70% (12/17)   Compressing objects:  76% (13/17)   Compressing objects:  82% (14/17)   Compressing objects:  88% (15/17)   Compressing objects:  94% (16/17)   Compressing objects: 100% (17/17)   Compressing objects: 100% (17/17), done.
+Writing objects:   5% (1/17)   Writing objects:  11% (2/17)   Writing objects:  17% (3/17)   Writing objects:  23% (4/17)   Writing objects:  29% (5/17)   Writing objects:  35% (6/17)   Writing objects:  41% (7/17)   Writing objects:  47% (8/17)   Writing objects:  52% (9/17)   Writing objects:  58% (10/17)   Writing objects:  64% (11/17)   Writing objects:  70% (12/17)   Writing objects:  76% (13/17)   Writing objects:  82% (14/17)   Writing objects:  88% (15/17)   Writing objects:  94% (16/17)   Writing objects: 100% (17/17)   Writing objects: 100% (17/17), 4.98 KiB | 463.00 KiB/s, done.
+Total 17 (delta 6), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/6)   [Kremote: Resolving deltas:  16% (1/6)   [Kremote: Resolving deltas:  50% (3/6)   [Kremote: Resolving deltas:  66% (4/6)   [Kremote: Resolving deltas:  83% (5/6)   [Kremote: Resolving deltas: 100% (6/6)   [Kremote: Resolving deltas: 100% (6/6), completed with 4 local objects.[K
+To https://github.com/miosisoniii/shinyNAP.git
+   09af8cb..6a3eb46  master -> master
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ●✚ [49m[33m[39m [K[?1h=[?2004hggit commit -m "addd ed a R proj"[?1l>[?2004l
+]2;git commit -m "added R proj"]1;git[master a5a043b] added R proj
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit checkout proj tshowhide_prot[1m [0m[0m   ot[?1l>[?2004l
+]2;git checkout showhide_prot]1;giterror: Your local changes to the following files would be overwritten by checkout:
+	.Rproj.user/F1376152/console06/1262E85E
+Please commit your changes or stash them before you switch branches.
+Aborting
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m [31m✘[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hj ggit status[?1l>[?2004l
+]2;git status]1;gitOn branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/F1376152/console06/1262E85E[m
+	[31mmodified:   .Rproj.user/F1376152/sources/prop/INDEX[m
+	[31mmodified:   .Rproj.user/shared/notebooks/paths[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit commit      add *[?1l>[?2004l
+]2;git add *]1;git[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hlls -l[?1l>[?2004l
+]2;ls -G -l]1;lstotal 104
+-rw-r--r--   1 artemiosisoniii  staff     11 Nov 18 22:27 README.md
+drwxr-xr-x  14 artemiosisoniii  staff    448 Nov 18 23:09 [1m[36mdata[39;49m[0m
+-rwxr-xr-x   1 artemiosisoniii  staff   5251 Nov 18 14:32 [31mglobal.R[39;49m[0m
+-rwxr-xr-x   1 artemiosisoniii  staff  25808 Nov 18 23:09 [31mserver.R[39;49m[0m
+-rw-r--r--   1 artemiosisoniii  staff    205 Nov 18 23:09 shinyNAP.Rproj
+-rwxr-xr-x   1 artemiosisoniii  staff   5662 Nov 18 23:09 [31mui.R[39;49m[0m
+drwxr-xr-x   5 artemiosisoniii  staff    160 Nov 18 14:23 [1m[36mwww[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit commit      status[?1l>[?2004l
+]2;git status]1;gitOn branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/F1376152/console06/1262E85E[m
+	[31mmodified:   .Rproj.user/F1376152/sources/prop/INDEX[m
+	[31mmodified:   .Rproj.user/shared/notebooks/paths[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit add .[?1l>[?2004l
+]2;git add .]1;git
