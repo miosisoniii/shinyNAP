@@ -1,0 +1,2 @@
+pos	HLA	peptide	Core	Offset	I_pos	I_len	D_pos	D_len	iCore	Identity	X1.log50k.aff.	Affinity.nM.	X.Rank	BindLevel
+0	HLA-A2501	EDAFGLGGL	EDAFGLGGL	0	0	0	0	0	EDAFGLGGL	MYCN_94	0.28	2406.44	0.25	<=SB

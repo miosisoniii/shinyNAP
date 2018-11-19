@@ -1,0 +1,2 @@
+pos	HLA	peptide	Core	Offset	I_pos	I_len	D_pos	D_len	iCore	Identity	X1.log50k.aff.	Affinity.nM.	X.Rank	BindLevel
+0	HLA-A2601	EPPSWVTEM	EPPSWVTEM	0	0	0	0	0	EPPSWVTEM	MYCN_73	0.354	1083.38	0.5	<=SB

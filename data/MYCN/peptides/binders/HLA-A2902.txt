@@ -1,0 +1,2 @@
+pos	HLA	peptide	Core	Offset	I_pos	I_len	D_pos	D_len	iCore	Identity	X1.log50k.aff.	Affinity.nM.	X.Rank	BindLevel
+0	HLA-A2902	HNYAAPSPY	HNYAAPSPY	0	0	0	0	0	HNYAAPSPY	MYCN_330	0.59	84.73	0.5	<=SB

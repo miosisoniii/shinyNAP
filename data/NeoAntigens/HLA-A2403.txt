@@ -1,0 +1,57 @@
+# /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/bin/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt -a HLA-A2403
+# Fri Nov 16 15:14:47 2018
+# User: artemiosisoniii
+# PWD : /Users/artemiosisoniii/shinyNAP_topub
+# -f       data/NeoAntigens/wt_v_mut_netmhc.txt Input file (by default in FASTA format)
+# -a       HLA-A2403            HLA allele name
+# Command line parameters set to:
+#	[-a line]            HLA-A2403            HLA allele name
+#	[-f filename]        data/NeoAntigens/wt_v_mut_netmhc.txt Input file (by default in FASTA format)
+#	[-p]                 0                    Switch on if input is a list of peptides (Peptide format)
+#	[-l string]          9                    Peptide length (multiple lengths separated by comma e.g. 8,9,10)
+#	[-s]                 0                    Sort output on decreasing affinity
+#	[-rth float]         0.500000             Threshold for high binding peptides (%Rank)
+#	[-rlt float]         2.000000             Threshold for low binding peptides (%Rank)
+#	[-listMHC]           0                    Print list of alleles included in netMHC
+#	[-xls]               0                    Save output to xls file
+#	[-xlsfile filename]  NetMHC_out.xls       File name for xls output
+#	[-t float]           -99.900002           Threshold for output
+#	[-thrfmt filename]   /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/data/threshold/%s.thr Format for threshold filenames
+#	[-hlalist filename]  /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/data/allelelist File with covered HLA names
+#	[-rdir filename]     /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64 Home directory for NetMHC
+#	[-tdir filename]     /var/folders/b3/7fbd4fz132s1h3x02t1l_1r40000gn/T/ Temporary directory (Default $$)
+#	[-syn filename]      /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/data/synlists/%s.synlist Format of synlist file
+#	[-v]                 0                    Verbose mode
+#	[-dirty]             0                    Dirty mode, leave tmp dir+files
+#	[-inptype int]       0                    Input type [0] FASTA [1] Peptide
+#	[-version filename]  /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/data/version File with version information
+#	[-w]                 0                    w option for webface
+
+# NetMHC version 4.0
+
+# Read 132 elements on pairlist /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/data/allelelist
+# Input is in FSA format
+
+# Peptide length 9
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-A2403    CLLDSSGML    CLLDSSGML      0      0      0      0      0    CLLDSSGML           WT1_1         0.167      8234.86     5.00
+-----------------------------------------------------------------------------------
+
+Protein WT1_1. Allele HLA-A2403. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-A2403    YLLDSSGML    YLLDSSGML      0      0      0      0      0    YLLDSSGML       Mutant1_2         0.219      4683.62     3.50
+-----------------------------------------------------------------------------------
+
+Protein Mutant1_2. Allele HLA-A2403. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------

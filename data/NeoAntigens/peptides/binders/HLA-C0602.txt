@@ -1,0 +1,2 @@
+pos	HLA	peptide	Core	Offset	I_pos	I_len	D_pos	D_len	iCore	Identity	X1.log50k.aff.	Affinity.nM.	X.Rank	BindLevel
+0	HLA-C0602	YLLDSSGML	YLLDSSGML	0	0	0	0	0	YLLDSSGML	Mutant1_2	0.355	1075.19	0.5	<=SB
