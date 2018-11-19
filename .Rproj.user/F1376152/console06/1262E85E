@@ -351,4 +351,70 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 [1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit add .[?1l>[?2004l
-]2;git add .]1;git
+]2;git add .]1;git[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ●✚ [49m[33m[39m [K[?1h=[?2004hggit comi mit -m "adde d R proj "[?1l>[?2004l
+]2;git commit -m "added R proj"]1;git[master 44b16f4] added R proj
+ 3 files changed, 59 insertions(+)
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit status[?1l>[?2004l
+]2;git status]1;gitOn branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/F1376152/console06/1262E85E[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hkks k  ggit status[?1l>[?2004l
+]2;git status]1;gitOn branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/F1376152/console06/1262E85E[m
+	[31mmodified:   .gitignore[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit commit -a * "m * "[1C[1C[1C[1Ca changed gitignore t [Koo oin   [K[A[94C[K[1B[K[A[94Ct [Kooin o o incluid   ude user files"[?1l>[?2004l
+]2;git commit -am * "changed gitignore to include user files"]1;gitfatal: Paths with -a does not make sense.
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m [31m✘[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hgit commit -am * "changed gitignore to include user files"[K[1C[A[94C[1C[1C[1C[1C[1C[1C[P[22C t[P[21C [A[49C[?1l>[?2004l[1B
+]2;git commit -m * "changed gitignore to include user files"]1;giterror: pathspec 'changed gitignore to include user files' did not match any file(s) known to git.
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m [31m✘[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hgit commit -m * "changed gitignore to include user files"[K[A[94C[1C[P[20Cto[P[20C [A[52C[P[20Co [P[19C [A[52C[?1l>[?2004l[1B
+]2;git commit -m "changed gitignore to include user files"]1;gitOn branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+	[31mmodified:   .Rproj.user/F1376152/console06/1262E85E[m
+	[31mmodified:   .gitignore[m
+
+no changes added to commit
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m [31m✘[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hiigi  ggit push[?1l>[?2004l
+]2;git push]1;gitCounting objects: 18, done.
+Delta compression using up to 8 threads.
+Compressing objects:   5% (1/17)   Compressing objects:  11% (2/17)   Compressing objects:  17% (3/17)   Compressing objects:  23% (4/17)   Compressing objects:  29% (5/17)   Compressing objects:  35% (6/17)   Compressing objects:  41% (7/17)   Compressing objects:  47% (8/17)   Compressing objects:  52% (9/17)   Compressing objects:  58% (10/17)   Compressing objects:  64% (11/17)   Compressing objects:  70% (12/17)   Compressing objects:  76% (13/17)   Compressing objects:  82% (14/17)   Compressing objects:  88% (15/17)   Compressing objects:  94% (16/17)   Compressing objects: 100% (17/17)   Compressing objects: 100% (17/17), done.
+Writing objects:   5% (1/18)   Writing objects:  11% (2/18)   Writing objects:  16% (3/18)   Writing objects:  22% (4/18)   Writing objects:  27% (5/18)   Writing objects:  33% (6/18)   Writing objects:  38% (7/18)   Writing objects:  44% (8/18)   Writing objects:  50% (9/18)   Writing objects:  55% (10/18)   Writing objects:  61% (11/18)   Writing objects:  66% (12/18)   Writing objects:  72% (13/18)   Writing objects:  77% (14/18)   Writing objects:  83% (15/18)   Writing objects:  88% (16/18)   Writing objects:  94% (17/18)   Writing objects: 100% (18/18)   Writing objects: 100% (18/18), 2.31 KiB | 131.00 KiB/s, done.
+Total 18 (delta 6), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/6)   [Kremote: Resolving deltas:  33% (2/6)   [Kremote: Resolving deltas:  66% (4/6)   [Kremote: Resolving deltas:  83% (5/6)   [Kremote: Resolving deltas: 100% (6/6)   [Kremote: Resolving deltas: 100% (6/6), completed with 4 local objects.[K
+To https://github.com/miosisoniii/shinyNAP.git
+   6a3eb46..44b16f4  master -> master
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit status[?1l>[?2004l
+]2;git status]1;gitOn branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/F1376152/console06/1262E85E[m
+	[31mmodified:   .gitignore[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit add *[?1l>[?2004l
+]2;git add *]1;git[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit add .
+[J[0m.Rproj.user  [J.gitignore [J[A[0m[27m[24m[0m[39m[49m[58Cgit add .[K[0m[39m[49mRpoj  roj.user[1m/[0m[0m/[?1l>[?2004l
+[J
