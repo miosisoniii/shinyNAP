@@ -1,5 +1,13 @@
 .Rproj.user/**
+<<<<<<< HEAD
 .Rhistory
 .RData
 .Ruserdata
 shinyNAP.Rproj
+=======
+.Rproj.user
+>>>>>>> showhide_prot
+.Rhistory
+.RData
+.Ruserdata
+>>>>>>> 10c6f62e9f75c611fb5867c51fdd9a98c976500f
