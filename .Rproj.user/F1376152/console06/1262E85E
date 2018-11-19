@@ -454,4 +454,17 @@ To https://github.com/miosisoniii/shinyNAP.git
 Please commit your changes or stash them before you switch branches.
 Aborting
 [1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m [31m✘[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit  g  ggit s add .[?1l>[?2004l
-]2;git add .]1;git
+]2;git add .]1;git[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ●✚ [49m[33m[39m [K[?1h=[?2004hggit comit  mit "i tseting        "added git   Ror  proj user"  files[?1l>[?2004l
+[0m[27m[24m[Jdquote> [K[?1h=[?2004h"[?1l>[?2004l
+]2;git commit "added Rproj user files "]1;giterror: pathspec 'added Rproj user files
+' did not match any file(s) known to git.
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m [31m✘[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ●✚ [49m[33m[39m [K[?1h=[?2004hgit commit "added Rproj user files [K
+"[K[A[A[94C-"added Rproj user files[A[72Cm"added Rproj user files[A[72C "added Rproj user files[A[72C[?1l>[?2004l[2B
+]2;git commit -m "added Rproj user files "]1;git[master 92cb4eb] added Rproj user files
+ 1 file changed, 38 insertions(+), 1 deletion(-)
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004hggit s checkout showhide_prot[1m [0m[0m [?1l>[?2004l
+]2;git checkout showhide_prot]1;giterror: Your local changes to the following files would be overwritten by checkout:
+	.Rproj.user/F1376152/console06/1262E85E
+Please commit your changes or stash them before you switch branches.
+Aborting
+[1m[7m%[27m[1m[0m                                                                                               ]2;artemiosisoniii@Artemios-MBP: ~/shinyNAP]1;~/shinyNAP[0m[27m[24m[J[39m[0m[49m[40m[39m [31m✘[40m[39m artemiosisoniii@Artemios-MBP [44m[30m[30m ~/shinyNAP [43m[34m[30m  master ● [49m[33m[39m [K[?1h=[?2004h
