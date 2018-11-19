@@ -339,6 +339,23 @@ shinyServer(function(input, output) {
   #################################################################################
   #code for running the gene search
   #################################################################################
+  
+  observeEvent(input$prot_lib_cust_radio, {
+    #when library radio is selected, hide textinput
+    if ("prot_custom" == input$prot_lib_cust_radio) {
+      shinyjs::show("name_textinput")
+      shinyjs::show("geneseq_textinput")
+      shinyjs::hide("selectgene")
+    }
+    if ("prot_library" == input$prot_lib_cust_radio) {
+      shinyjs::hide("name_textinput")
+      shinyjs::hide("geneseq_textinput")
+      shinyjs::show("selectgene")
+    }
+    
+  })
+  
+  
   lib_cust_gene_select <- reactive({
     switch(input$lib_cust_gene_radio,
            gene_custom = ins_gene_table(),
@@ -346,7 +363,7 @@ shinyServer(function(input, output) {
   })
   #LIBRARY-SELECT GENE
   selected_gene <- reactive({
-    if (input$lib_cust_gene_radio == gene_library) {
+    if (input$prot_lib_cust_radio == "prot_library") {
       gene_seq_df %>%
         filter(gene == input$selectgene)
     } else {
@@ -361,7 +378,7 @@ shinyServer(function(input, output) {
   ins_gene_table <- reactive({
     geneseq <- input$geneseq_textinput
     genename <- input$name_textinput
-    genetext_table$seq <- pepseq
+    genetext_table$seq <- geneseq
     genetext_table$gene <- genename
     genetext_table
   })
