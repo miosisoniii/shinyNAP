@@ -422,22 +422,17 @@ shinyServer(function(input, output) {
   
   #Process netMHC output
   processed_data_test <- eventReactive(input$initiate_processing, {
-    #testing progress bar
     withProgress(message = "Processing netMHC output",
                  detail = "This may take a minute... ", value = 0.1, {
                      raw_HLAfiles <- list.files(path = paste("data/", selected_gene()$gene[1], sep = ""), pattern = "HLA*",
                                                 full.names = "TRUE")
-                    
                      incProgress(0.005, message = "reading HLA files...")
-
                      setProgress(0.2)
-                     #remove blanks
                      system(paste("mkdir data/", selected_gene()$gene[1], "/peptides/", sep = ""))
                      for(f in raw_HLAfiles){
                        x <- readLines(f)
                        y <- gsub( "<= ", "<=", x )
                        cat(y, file=f, sep="\n")
-
                        incProgress(0.0005, message = paste("Output files read: ", f))
                      }
                      setProgress(0.5)
@@ -454,26 +449,19 @@ shinyServer(function(input, output) {
                      setProgress(0.55, message = "Reading peptide files")
                      pep_HLAfiles <- list.files(path = paste("data/", selected_gene()$gene[1], "/peptides", sep = ""), pattern = "HLA*",
                                                 full.names = "TRUE")
-                     #pep_HLAfiles <- pep_HLAfiles[pep_HLAfiles != paste(selected_gene()$gene[1], "/peptides/NA.txt", sep = "")]
-                     #pep_HLAfiles
 
                      setProgress(0.6, message = "Creating binders")
-                     #create binders: status 4
+                     #create binders
                      system(paste("mkdir data/", selected_gene()$gene[1], "/peptides/binders/", sep = ""))
                      createbinders(selected_gene(), pep_HLAfiles)
 
                      setProgress(0.65, message = "Reading binders files")
-                     #read binders files: status 5
+                     #read binders files
                      bind_HLAfiles <- list.files(path = paste("data/", selected_gene()$gene[1], "/peptides/binders", sep = ""), pattern = "HLA*",
                                                  full.names = "TRUE")
-                     #bind_HLAfiles <- bind_HLAfiles[bind_HLAfiles != paste(selected_gene()$gene[1], "/peptides/binders/NA.txt", sep = "")]
-                     #bind_HLAfiles
-
 
                      a <- read.delim(pep_HLAfiles[1], header = T, stringsAsFactors = F, sep="")
-
                      setProgress(0.70, message = "Creating table")
-                     
                      #create table
                      combined <-data.frame(matrix(nrow = nrow(a), ncol = nrow(hla)))
                      row.names(combined) <- a$Identity
@@ -496,9 +484,39 @@ shinyServer(function(input, output) {
   })
   
   
+  
+  #selectinput for maps
+  mapselect <- reactive({
+    selected_map <- list.files(path = paste("data/maps/", input$selectgene, sep = ""), 
+                               pattern = "*.txt", full.names = TRUE)
+    # a <- read.delim(selected_map, header = T, stringsAsFactors = F, sep="")
+
+  })
+  #this output tests if we can use directory names as a selectinput in the ui
+  output$printmapnames <- renderText({
+    mapselect()
+  })
+
+  
+  
+  #read in data/maps/GENE.txt files
+  read_maps <- eventReactive(input$plotselectedmap, {
+    selected_map_read <- read.delim(mapselect(), header = T, stringsAsFactors = F)
+    selected_map_read
+  })
+
+  
+  
+  
+  
+  
+  
+  #plot output
   output$plot_9aa_out <- renderPlotly({
     withProgress(message = "Awaiting processed data...", value = 0.1, {
-      combined <- processed_data_test()
+      
+      combined <- read_maps()
+      #combined <- processed_data_test()
       combined <- combined[-nrow(combined),]
       incProgress(0.2, message = "Generating 9aa frequency plot")
       combined %>%
@@ -508,9 +526,9 @@ shinyServer(function(input, output) {
                      # "<br>",
                      # "Amino Acid: ", aa,
                      # "<br>",
-                     "# Alleles Bound: ", Alleles_bound,
+                     #"# Alleles Bound: ", Alleles_bound,
                      "<br>",
-                     "Bound Alleles: ", HLA_binders,
+                     #"Bound Alleles: ", HLA_binders,
                      "<br>",
                      #does the score need to be in percent form?
                      "Frequency Score: ", paste(round(HLA_frequency, digits = 3) * 100, "%", sep = ""),
@@ -531,7 +549,8 @@ shinyServer(function(input, output) {
 
   #plot17aa
   plot_17aa <- reactive({
-    combined <- processed_data_test()
+    combined <- read_maps()
+    #combined <- processed_data_test()
     for (i in 1:nrow(combined)){
       l <- i-8
       u <- i
@@ -579,9 +598,9 @@ shinyServer(function(input, output) {
   output$plot_17aa_out <- renderPlotly({
     withProgress(message = "Generating 17aa plot", value = 0.1, {
       incProgress(0.2, message = "Generating 17aa frequency plot")
-      
       #plotly attempt
-      combined <- plot_17aa()
+      combined <- read_maps()
+      #combined <- plot_17aa()
       combined <- combined[-nrow(combined),]
       combined %>%
         ggplot(aes(x = as.numeric(position),
@@ -592,9 +611,9 @@ shinyServer(function(input, output) {
                      # "Amino Acid: ", aa,
                      # "<br>",
                      #alleles bound pulls from bound alleles from 9aa, include for 17/33aa??
-                     "# Alleles Bound: ", aa17_bindertotal,
+                     #"# Alleles Bound: ", aa17_bindertotal,
                      "<br>",
-                     "Bound Alleles: ", aa17_binderlist,
+                     #"Bound Alleles: ", aa17_binderlist,
                      "<br>",
                      #does the score need to be in percent form?
                      "17mer Score: ", paste(round(scorereg17, digits = 3) * 100, "%", sep = ""),
@@ -615,7 +634,8 @@ shinyServer(function(input, output) {
 
   #plot 33aa
   plot_33aa <- reactive({
-    combined <- plot_17aa()
+    combined <- read_maps()
+    #combined <- plot_17aa()
     for (i in 1:nrow(combined)){
       l <- i-16
       u <- i+8
@@ -668,9 +688,9 @@ shinyServer(function(input, output) {
   output$plot_33aa_out <- renderPlotly({
     withProgress(message = "Generating 33aa plot", value = 0.2, {
       incProgress(0.05, message = "Generating 33aa frequency plot")
-      
-      plot_33aa() %>% 
-        filter(position != "frequency") -> combined
+      combined <- read_maps()
+      # plot_33aa() %>% 
+      #   filter(position != "frequency") -> combined
       incProgress(0.1)
       combined %>%
         ggplot(aes(x = as.numeric(position), y = scorereg33, 
@@ -678,9 +698,9 @@ shinyServer(function(input, output) {
                                 "<br>",
                                 "Amino Acid: ", aa,
                                 "<br>",
-                                "# Alleles Bound: ", aa33_bindertotal,
+                                #"# Alleles Bound: ", aa33_bindertotal,
                                 "<br>",
-                                "Bound Alleles: ", aa33_binderlist,
+                                #"Bound Alleles: ", aa33_binderlist,
                                 "<br>",
                                 #does the score need to be in percent form?
                                 "33mer Score: ", paste(round(scorereg33, digits = 3) * 100, "%", sep = ""),

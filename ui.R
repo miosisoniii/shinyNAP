@@ -57,11 +57,15 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                                                           "Enter your own sequence" = "prot_custom"),
                                                         selected = "prot_library"
                                            ),
-                                           
+                                           #original for 5 genes
+                                           # selectInput(inputId = 'selectgene',
+                                           #             label = 'Select Gene to Analyze',
+                                           #             choices = gene_seq_df$gene,
+                                           #             selected = "MYCN"),
                                            selectInput(inputId = 'selectgene',
                                                        label = 'Select Gene to Analyze',
-                                                       choices = gene_seq_df$gene,
-                                                       selected = "MYCN"),
+                                                       choices = select_maps,
+                                                       selected = "AKT1"),
                                            
                                            
                                            textInput("name_textinput", "Enter gene/protein name:", paste(gene_seq_df$gene[2])),
@@ -72,10 +76,11 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                                            br(),
                                            actionButton("initiate_processing", "Submit"),
                                            br(),
-                                           br()
+                                           br(),
+                                           actionButton("plotselectedmap", "Plot Selected Map TEST")
                               ),
                               mainPanel(width = 9,
-                                        
+                                        textOutput("printmapnames"),
                                         tableOutput("showtextgene"),
                                         
                                         
