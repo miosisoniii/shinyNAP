@@ -6,7 +6,7 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                             titlePanel("Custom NeoAntigen"),
                             sidebarLayout(
                               sidebarPanel(width = 3,
-                                           #testing hiding
+
                                            useShinyjs(),
                                            radioButtons("lib_cust_radio", "Library or Custom?",
                                                         c("Library Search" = "library",
@@ -19,7 +19,6 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                                            
                                            textInput("WT_text_in", "Wild Type Sequence:", "CLLDSSGML"),
                                            textInput("MUT_text_in", "Mutant Sequence:", "YLLDSSGML"),
-                                           #actionButton("create_peptable", "Create Peptide Table"),
                                            br(),
                                            actionButton("create_pepsearchfile", "Create Peptide Searchfile"),
                                            br(),

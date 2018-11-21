@@ -61,60 +61,6 @@ shinyServer(function(input, output) {
       createneo_searchfile(gene_sel_neolib())
     }
       
-      #must adjust FOR LOOP OR SINK HERE!
-    #   for (j in 1:nrow(neotab)){
-    #     a <- data.frame(matrix(ncol = 1))
-    #     for (i in 1:(nchar(as.vector(neotab$seq[j]))-8)){
-    #       a<-rbind(a,substr(neotab$seq[j], i, i+8))
-    #     }
-    #     sink(paste("data/NeoAntigens/wt_v_mut_netmhc.txt"))
-    #     for (i in 2:nrow(a)){
-    #       cat(paste(">", neotab$gene[j], "_", i-1,sep=""))
-    #       cat("\n")
-    #       cat(a$matrix.ncol...1.[i])
-    #       cat("\n")
-    #     }
-    #     sink()
-    #   }#sink does not work here!
-    # } 
-  
-    ###
-    #function with if statement that dictates which searchfile type
-    #KIND OF WORKS
-    ###
-    # sel_searchfile <- function(sel_gene_df){
-    #   #sink(paste("data/NeoAntigens/wt_v_mut_netmhc.txt"))
-    #   if (input$lib_cust_radio == "custom"){
-    #     sink(paste("data/NeoAntigens/wt_v_mut_netmhc.txt"))
-    #     for (j in 1:nrow(sel_gene_df)){
-    #       cat(paste(">", sel_gene_df$gene[j], "_", j, sep =""))
-    #       cat("\n")
-    #       cat(sel_gene_df$seq[j])
-    #       cat("\n")
-    #     }
-    #     sink() #this sink works
-    #   } else {
-    #     #sink(paste("data/NeoAntigens/wt_v_mut_netmhc.txt"))
-    #     for (j in 1:nrow(sel_gene_df)){
-    #       a <- data.frame(matrix(ncol = 1))
-    #       for (i in 1:(nchar(as.vector(sel_gene_df$seq[j]))-8)){
-    #         a<-rbind(a,substr(sel_gene_df$seq[j], i, i+8))
-    #       }
-    #       sink(paste("data/NeoAntigens/wt_v_mut_netmhc.txt"))
-    #       for (i in 2:nrow(a)){
-    #         cat(paste(">",sel_gene_df$gene[j], "_", i-1,sep=""))
-    #         cat("\n")
-    #         cat(a$matrix.ncol...1.[i])
-    #         cat("\n")
-    #       }
-    #       sink()
-    #     }
-    #     #sink()
-    #   }
-    #   #sink()
-    # }
-    # 
-    
     #attempt to use individual search file code for custom/library with if statement
     #sel_searchfile(lib_cust_select())
     
