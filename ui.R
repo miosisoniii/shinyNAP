@@ -29,7 +29,7 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                               mainPanel(width = 9,
                                         tableOutput("neolibtable"),
                                         
-                                        
+                    
                                         
                                         renderTable("pep_table"),
                                         textOutput("searchfile_pep"),
@@ -37,7 +37,6 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                                         textOutput("pepnetmhc_complete"),
                                         plotlyOutput("plot_pep_out"),
                                         br(),
-                                        #tableOutput("pep_out"),
                                         tableOutput("HLAneo_prop_out")
                                         
                               )
@@ -56,19 +55,14 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                                                           "Enter your own sequence" = "prot_custom"),
                                                         selected = "prot_library"
                                            ),
-                                           #original for 5 genes
-                                           # selectInput(inputId = 'selectgene',
-                                           #             label = 'Select Gene to Analyze',
-                                           #             choices = gene_seq_df$gene,
-                                           #             selected = "MYCN"),
                                            selectInput(inputId = 'selectgene',
                                                        label = 'Select Gene to Analyze',
                                                        choices = select_maps,
                                                        selected = "AKT1"),
                                            
                                            
-                                           textInput("name_textinput", "Enter gene/protein name:", paste(gene_seq_df$gene[2])),
-                                           textInput("geneseq_textinput", "Enter amino acid sequence:", paste(gene_seq_df$seq[2])),
+                                           textInput("name_textinput", "Enter gene/protein name:", paste(gene_seq_df$gene[1])),
+                                           textInput("geneseq_textinput", "Enter amino acid sequence:", paste(gene_seq_df$seq[1])),
                                            actionButton("create_searchfile", "Create Searchfile"),
                                            br(),
                                            actionButton("run_netMHC", "Run netMHC"),
@@ -79,17 +73,17 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                                            actionButton("plotselectedmap", "Plot Selected Map TEST")
                               ),
                               mainPanel(width = 9,
-                                        textOutput("printmapnames"),
-                                        tableOutput("showtextgene"),
-                                        
-                                        
+                                        useShinyjs(),
                                         textOutput("searchfile_complete"),
                                         textOutput("netmhc_complete"),
                                         textOutput("complete"),
                                         plotlyOutput("plot_9aa_out"),
-                                        verbatimTextOutput("plotinfo_9aa"),
                                         plotlyOutput("plot_17aa_out"),
-                                        plotlyOutput("plot_33aa_out")
+                                        plotlyOutput("plot_33aa_out"),
+                                        
+                                        plotlyOutput("custplot_9aa_out"),
+                                        plotlyOutput("custplot_17aa_out"),
+                                        plotlyOutput("custplot_33aa_out")
                               )
                             )
                           )

@@ -292,34 +292,48 @@ shinyServer(function(input, output) {
       shinyjs::show("name_textinput")
       shinyjs::show("geneseq_textinput")
       shinyjs::hide("selectgene")
+      #test hide plots for textinput
+      shinyjs::hide("plot_9aa_out")
+      shinyjs::hide("plot_17aa_out")
+      shinyjs::hide("plot_33aa_out")
+      shinyjs::show("custplot_9aa_out")
+      shinyjs::show("custplot_17aa_out")
+      shinyjs::show("custplot_33aa_out")
+      
     }
     if ("prot_library" == input$prot_lib_cust_radio) {
       shinyjs::hide("name_textinput")
       shinyjs::hide("geneseq_textinput")
       shinyjs::show("selectgene")
+      #test hide plots for textinput
+      shinyjs::show("plot_9aa_out")
+      shinyjs::show("plot_17aa_out")
+      shinyjs::show("plot_33aa_out")
+      shinyjs::hide("custplot_9aa_out")
+      shinyjs::hide("custplot_17aa_out")
+      shinyjs::hide("custplot_33aa_out")
+
     }
     
   })
   
-  
+  #LIBRARY-SELECT GENE
+  selected_gene <- reactive({
+    if (input$prot_lib_cust_radio == "prot_library") {
+      #pull file path for selected LIBRARY GENE input
+      selected_map <- list.files(path = paste("data/maps/", input$selectgene, sep = ""), 
+                                 pattern = "*map3.txt", full.names = TRUE)
+    } else {
+      ins_gene_table()
+    }
+  }) 
+  #switch from variable name in selectinput
   lib_cust_gene_select <- reactive({
     switch(input$lib_cust_gene_radio,
            gene_custom = ins_gene_table(),
            gene_library = selected_gene())
   })
-  #LIBRARY-SELECT GENE
-  selected_gene <- reactive({
-    if (input$prot_lib_cust_radio == "prot_library") {
-      gene_seq_df %>%
-        filter(gene == input$selectgene)
-    } else {
-      ins_gene_table()
-    }
-  }) 
-  output$showtextgene <- renderTable({
-    selected_gene()
-  }, rownames = T)
-  
+
   #CUSTOM PROTEIN SEQ
   ins_gene_table <- reactive({
     geneseq <- input$geneseq_textinput
@@ -405,10 +419,9 @@ shinyServer(function(input, output) {
                      #read binders files
                      bind_HLAfiles <- list.files(path = paste("data/", selected_gene()$gene[1], "/peptides/binders", sep = ""), pattern = "HLA*",
                                                  full.names = "TRUE")
-
+                     #create table
                      a <- read.delim(pep_HLAfiles[1], header = T, stringsAsFactors = F, sep="")
                      setProgress(0.70, message = "Creating table")
-                     #create table
                      combined <-data.frame(matrix(nrow = nrow(a), ncol = nrow(hla)))
                      row.names(combined) <- a$Identity
                      colnames(combined) <- hla$Allele
@@ -430,73 +443,98 @@ shinyServer(function(input, output) {
   })
   
   
-  
-  #selectinput for maps
-  mapselect <- reactive({
-    selected_map <- list.files(path = paste("data/maps/", input$selectgene, sep = ""), 
-                               pattern = "*.txt", full.names = TRUE)
-    # a <- read.delim(selected_map, header = T, stringsAsFactors = F, sep="")
-
-  })
-  #this output tests if we can use directory names as a selectinput in the ui
-  output$printmapnames <- renderText({
-    mapselect()
-  })
-
-  
-  
   #read in data/maps/GENE.txt files
   read_maps <- eventReactive(input$plotselectedmap, {
-    selected_map_read <- read.delim(mapselect(), header = T, stringsAsFactors = F)
-    selected_map_read
+    selected_map_read <- read.delim(selected_gene(), header = T, stringsAsFactors = F, row.names = 1)
   })
-
-  
-  
-  
-  
-  
-  
-  #plot output
+  #9aa plot for LIBRARY
   output$plot_9aa_out <- renderPlotly({
     withProgress(message = "Awaiting processed data...", value = 0.1, {
-      
       combined <- read_maps()
-      #combined <- processed_data_test()
+      colnames(combined) <- gsub("\\.", "-", colnames(combined))
       combined <- combined[-nrow(combined),]
       incProgress(0.2, message = "Generating 9aa frequency plot")
-      combined %>%
-        ggplot(aes(x = as.numeric(position),y = HLA_frequency,
-                   text = paste(
-                     # "Position: ", position,
-                     # "<br>",
-                     # "Amino Acid: ", aa,
-                     # "<br>",
-                     #"# Alleles Bound: ", Alleles_bound,
-                     "<br>",
-                     #"Bound Alleles: ", HLA_binders,
-                     "<br>",
-                     #does the score need to be in percent form?
-                     "Frequency Score: ", paste(round(HLA_frequency, digits = 3) * 100, "%", sep = ""),
-                     "<br>",
-                     "Peptide: ", pep
-                     ))) +
-        ylim(c(0,1)) +
-        xlim(c(0, nrow(combined))) +
-        geom_col() +
-        xlab(paste(selected_gene()$gene[1], "Amino Acid Position")) +
-        ylab("9mer Scores") -> gg9
+      combined %>% ggplot(aes(x = as.numeric(position), y = HLA_frequency, text = paste(
+        "# Alleles Bound: ", Alleles_bound,
+        "<br>",
+        "Bound Alleles: ", HLA_binders,
+        "<br>",
+        "Frequency Score: ", paste(round(HLA_frequency, digits = 3) * 100, "%", sep = ""),
+        "<br>",
+        "Peptide: ", pep))) +
+        ylim(c(0,1)) + xlim(c(0, nrow(combined))) + geom_col() +  
+        ggtitle(paste("NetMHC Output for ", input$selectgene)) + xlab(paste(input$selectgene, " Amino Acid Position")) + ylab("9mer Scores") -> gg9
       setProgress(1)
       ggplotly(gg9, tooltip = "text")
     })
   })
-
-
-
-  #plot17aa
-  plot_17aa <- reactive({
-    combined <- read_maps()
-    #combined <- processed_data_test()
+  #17aa plot for LIBRARY
+  output$plot_17aa_out <- renderPlotly({
+    withProgress(message = "Generating 17aa plot", value = 0.1, {
+      incProgress(0.2, message = "Generating 17aa frequency plot")
+      combined <- read_maps()
+      combined <- combined[-nrow(combined),]
+      combined %>% ggplot(aes(x = as.numeric(position), y = scorereg17, text = paste(
+        "# Alleles Bound: ", aa17_bindertotal,
+        "<br>",
+        "Bound Alleles: ", aa17_binderlist,
+        "<br>",
+        "17mer Score: ", paste(round(scorereg17, digits = 3) * 100, "%", sep = ""),
+        "<br>",
+        "Peptide: ", seq17))) +
+        ylim(c(0,1)) + xlim(c(0, nrow(combined))) + geom_col() +
+        xlab(paste(input$selectgene, "Amino Acid Position")) + ylab("17mer Scores") -> gg17
+      setProgress(1)
+      ggplotly(gg17, tooltip = "text")
+    })
+  })
+  #33aa plot for LIBRARY
+  output$plot_33aa_out <- renderPlotly({
+    withProgress(message = "Generating 33aa plot", value = 0.2, {
+      incProgress(0.05, message = "Generating 33aa frequency plot")
+      combined <- read_maps()
+      incProgress(0.1)
+      combined %>% ggplot(aes(x = as.numeric(position), y = scorereg33, text = paste(
+        "# Alleles Bound: ", aa33_bindertotal,
+        "<br>",
+        "Bound Alleles: ", aa33_binderlist,
+        "<br>",
+        "33mer Score: ", paste(round(scorereg33, digits = 3) * 100, "%", sep = ""),
+        "<br>",
+        "Peptide: ", seq33))) +
+        ylim(c(0,1)) + xlim(c(0, nrow(combined))) + geom_col() +
+        xlab(paste(input$selectgene, " Amino Acid Position")) + ylab("33mer Scores") -> gg33
+      setProgress(1)
+      ggplotly(gg33, tooltip = "text")
+    })
+  })
+  
+###################################################################################
+#9aa plot for USER ENTRY
+output$custplot_9aa_out <- renderPlotly({
+  withProgress(message = "Awaiting processed data...", value = 0.1, {
+    combined <- processed_data_test()
+    colnames(combined) <- gsub("\\.", "-", colnames(combined))
+    combined <- combined[-nrow(combined),]
+    incProgress(0.2, message = "Generating 9aa frequency plot")
+    combined %>% ggplot(aes(x = as.numeric(position), y = HLA_frequency, text = paste(
+      "# Alleles Bound: ", Alleles_bound,
+      "<br>",
+      "Bound Alleles: ", HLA_binders,
+      "<br>",
+      "Frequency Score: ", paste(round(HLA_frequency, digits = 3) * 100, "%", sep = ""),
+      "<br>",
+      "Peptide: ", pep))) +
+      ylim(c(0,1)) + xlim(c(0, nrow(combined))) + geom_col() +
+      ggtitle(paste("NetMHC Output for", selected_gene()$gene[1])) +
+      xlab(paste(selected_gene()$gene[1], " Amino Acid Position")) + ylab("9mer Scores") -> gg9
+    setProgress(1)
+    ggplotly(gg9, tooltip = "text")
+  })
+})
+#plot17aa for USER ENTRY
+  custplot_17aa <- reactive({
+    combined <- processed_data_test()
     for (i in 1:nrow(combined)){
       l <- i-8
       u <- i
@@ -507,7 +545,6 @@ shinyServer(function(input, output) {
         u <- nrow(combined)-1
       }
       combined$seq17[i] <- substr(selected_gene()$seq[1], l, u+8)
-
       top <- combined[l:i,]
       hlas <- ""
       thla <- ""
@@ -516,7 +553,6 @@ shinyServer(function(input, output) {
         for (k in 1:length(thla)){
           hlas <- c(hlas,thla[k])
         }
-
       }
       unhlas <- unique(hlas)
       unhlas <- unhlas[unhlas != ""]
@@ -538,50 +574,30 @@ shinyServer(function(input, output) {
       combined$"aa17_binderlist"[i] <- paste(unlist(unhlas), collapse = ", ")
       combined$"aa17_bindertotal"[i] <- length(unhlas)
     }
-    #write.csv(combined, paste(selected_gene()$gene[1], "calc17.csv", sep = ""))
     combined
   })
-  output$plot_17aa_out <- renderPlotly({
+  output$custplot_17aa_out <- renderPlotly({
     withProgress(message = "Generating 17aa plot", value = 0.1, {
       incProgress(0.2, message = "Generating 17aa frequency plot")
-      #plotly attempt
-      combined <- read_maps()
-      #combined <- plot_17aa()
+      combined <- custplot_17aa()
       combined <- combined[-nrow(combined),]
-      combined %>%
-        ggplot(aes(x = as.numeric(position),
-                   y = scorereg17,
-                   text = paste(
-                     # "Position: ", position,
-                     # "<br>",
-                     # "Amino Acid: ", aa,
-                     # "<br>",
-                     #alleles bound pulls from bound alleles from 9aa, include for 17/33aa??
-                     #"# Alleles Bound: ", aa17_bindertotal,
-                     "<br>",
-                     #"Bound Alleles: ", aa17_binderlist,
-                     "<br>",
-                     #does the score need to be in percent form?
-                     "17mer Score: ", paste(round(scorereg17, digits = 3) * 100, "%", sep = ""),
-                     "<br>",
-                     "Peptide: ", seq17
-                     ))) +
-        ylim(c(0,1)) +
-        xlim(c(0, nrow(combined))) +
-        geom_col() +
-        xlab(paste(selected_gene()$gene[1], "Amino Acid Position")) +
-        ylab("17mer Scores") -> gg17
+      combined %>% ggplot(aes(x = as.numeric(position), y = scorereg17, text = paste(
+        "# Alleles Bound: ", aa17_bindertotal,
+        "<br>",
+        "Bound Alleles: ", aa17_binderlist,
+        "<br>",
+        "17mer Score: ", paste(round(scorereg17, digits = 3) * 100, "%", sep = ""),
+        "<br>",
+        "Peptide: ", seq17))) +
+        ylim(c(0,1)) + xlim(c(0, nrow(combined))) + geom_col() +
+        xlab(paste(selected_gene()$gene[1], "Amino Acid Position")) + ylab("17mer Scores") -> gg17
       setProgress(1)
       ggplotly(gg17, tooltip = "text")
-
-      #barplot(combined$scorereg17, ylim=c(0,1))
     })
   })
-
-  #plot 33aa
-  plot_33aa <- reactive({
-    combined <- read_maps()
-    #combined <- plot_17aa()
+  #plot 33aa for USER ENTRY
+  custplot_33aa <- reactive({
+    combined <- custplot_17aa()
     for (i in 1:nrow(combined)){
       l <- i-16
       u <- i+8
@@ -592,7 +608,6 @@ shinyServer(function(input, output) {
         u <- nrow(combined)-1
       }
       combined$seq33[i] <- substr(selected_gene()$seq[1], l, u+8)
-
       top <- combined[l:i,]
       hlas <- ""
       thla <- ""
@@ -601,7 +616,6 @@ shinyServer(function(input, output) {
         for (k in 1:length(thla)){
           hlas <- c(hlas,thla[k])
         }
-
       }
       unhlas <- unique(hlas)
       unhlas <- unhlas[unhlas != ""]
@@ -619,49 +633,35 @@ shinyServer(function(input, output) {
         }
       }
       probTCGA <- 1-probTCGA
-
       combined$scorereg33[i] <- as.numeric(probTCGA)
       combined$"aa33_bindertotal"[i] <- length(unhlas)
       combined$"aa33_binderlist"[i] <- paste(unlist(unhlas), collapse = ", ")
-      #write.csv(combined, paste(selected_gene()$gene[1], "calc33.csv", sep = ""))
-
-
     }
-    #write.csv(combined, paste(selected_gene()$gene[1], "calc33.csv", sep = ""))
     combined
   })
-
-  output$plot_33aa_out <- renderPlotly({
+  output$custplot_33aa_out <- renderPlotly({
     withProgress(message = "Generating 33aa plot", value = 0.2, {
       incProgress(0.05, message = "Generating 33aa frequency plot")
-      combined <- read_maps()
-      # plot_33aa() %>% 
-      #   filter(position != "frequency") -> combined
+      combined <- processed_data_test()
+      custplot_33aa() %>% filter(position != "frequency") -> combined
       incProgress(0.1)
-      combined %>%
-        ggplot(aes(x = as.numeric(position), y = scorereg33, 
-                   text = paste("Position: ", position,
-                                "<br>",
-                                "Amino Acid: ", aa,
-                                "<br>",
-                                #"# Alleles Bound: ", aa33_bindertotal,
-                                "<br>",
-                                #"Bound Alleles: ", aa33_binderlist,
-                                "<br>",
-                                #does the score need to be in percent form?
-                                "33mer Score: ", paste(round(scorereg33, digits = 3) * 100, "%", sep = ""),
-                                "<br>",
-                                "Peptide: ", seq33))) +
-        ylim(c(0,1)) +
-        xlim(c(0, nrow(combined))) +
-        geom_col() +
-        xlab(paste(selected_gene()$gene[1], " Amino Acid Position")) +
-        ylab("33mer Scores") -> gg33
+      combined %>% ggplot(aes(x = as.numeric(position), y = scorereg33, text = paste(
+        "# Alleles Bound: ", aa33_bindertotal,
+        "<br>",
+        "Bound Alleles: ", aa33_binderlist,
+        "<br>",
+        "33mer Score: ", paste(round(scorereg33, digits = 3) * 100, "%", sep = ""),
+        "<br>",
+        "Peptide: ", seq33))) +
+        ylim(c(0,1)) + xlim(c(0, nrow(combined))) + geom_col() +
+        xlab(paste(selected_gene()$gene[1], " Amino Acid Position")) + ylab("33mer Scores") -> gg33
       setProgress(1)
       ggplotly(gg33, tooltip = "text")
     })
   })
 
+  
+  
 })
 
 
