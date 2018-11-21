@@ -272,15 +272,6 @@ shinyServer(function(input, output) {
     neopropdata()
   },rownames = TRUE)
 
-
-
-  
-  
-  
-  
-  
-  
-  
   
   #################################################################################
   #code for running the gene search
@@ -289,6 +280,9 @@ shinyServer(function(input, output) {
   observeEvent(input$prot_lib_cust_radio, {
     #when library radio is selected, hide textinput
     if ("prot_custom" == input$prot_lib_cust_radio) {
+      shinyjs::show("initiate_processing")
+      shinyjs::hide("plotselectedmap")
+      
       shinyjs::show("name_textinput")
       shinyjs::show("geneseq_textinput")
       shinyjs::hide("selectgene")
@@ -299,9 +293,12 @@ shinyServer(function(input, output) {
       shinyjs::show("custplot_9aa_out")
       shinyjs::show("custplot_17aa_out")
       shinyjs::show("custplot_33aa_out")
-      
     }
     if ("prot_library" == input$prot_lib_cust_radio) {
+      #show submit library action buttons for plotting
+      shinyjs::hide("initiate_processing")
+      shinyjs::show("plotselectedmap")
+      #hide input for custom
       shinyjs::hide("name_textinput")
       shinyjs::hide("geneseq_textinput")
       shinyjs::show("selectgene")
@@ -312,9 +309,7 @@ shinyServer(function(input, output) {
       shinyjs::hide("custplot_9aa_out")
       shinyjs::hide("custplot_17aa_out")
       shinyjs::hide("custplot_33aa_out")
-
     }
-    
   })
   
   #LIBRARY-SELECT GENE
@@ -349,42 +344,74 @@ shinyServer(function(input, output) {
   
   
   
-  #create directory and search file
-  searchfile <- eventReactive(input$create_searchfile, {
-    system(paste("mkdir data/", selected_gene()$gene[1], sep=""))
-    createsearchfile(selected_gene())
-    print(paste("Creation of Searchfile for ", selected_gene()$gene[1], " complete.", sep = ""))
-  })
-  output$searchfile_complete <- renderText({
-    searchfile()
-  })
+  #create directory and search file for TEXT PROTEIN
+  # searchfile <- eventReactive(input$create_searchfile, {
+  #   system(paste("mkdir data/", selected_gene()$gene[1], sep=""))
+  #   createsearchfile(selected_gene())
+  #   print(paste("Creation of Searchfile for ", selected_gene()$gene[1], " complete.", sep = ""))
+  # })
+  # output$searchfile_complete <- renderText({
+  #   searchfile()
+  # })
   
-  #run netMHC
-  run_netMHC <- eventReactive(input$run_netMHC, {
+  #process USER INPUT 
+  # run_netMHC <- eventReactive(input$run_netMHC, {
+  #   storedgene <- selected_gene()$gene[1]
+  #   withProgress(message = "netMHC initialized; please wait.",
+  #                detail = "Running...",
+  #                value = 0.1, {
+  #                  #create searchfile
+  #                  system(paste("mkdir data/", selected_gene()$gene[1], sep=""))
+  #                  createsearchfile(selected_gene())
+  #                  incProgress(0.1, message = paste("Searchfile created for ", selected_gene()$gene[1]))
+  #                  
+  #                  #run netMHC on USER ENTRY
+  #                  foreach(i=1:nrow(hla)) %dopar% {
+  #                    system(paste("~/netMHC -f ",
+  #                    #system(paste("~/shinyNAPaws_testpaths/www/netMHC -f ", #for AWS
+  #                                 paste("data/", storedgene, "netmhc.txt", sep=""), 
+  #                                 " -a ", hla$Allele[i], " > data/", storedgene, "/", hla$Allele[i], ".txt", sep=""))
+  #                    incProgress(0.07, message = paste("Allele ", hla$Allele[i], "submitted", sep =""))
+  #                  }
+  #                  setProgress(1, message = paste("netMHC complete: ", length(hla), " processed", sep = ""))
+  #                })
+  #   print(paste("NetMHC search for ", storedgene, " complete.", sep = ""))
+  # })
+  # output$netmhc_complete <- renderText({
+  #   run_netMHC()
+  # })
+  
+  #Process USER INPUT
+  processed_data_test <- eventReactive(input$initiate_processing, {
     storedgene <- selected_gene()$gene[1]
     withProgress(message = "netMHC initialized; please wait.",
                  detail = "Running...",
                  value = 0.1, {
+                   #create searchfile
+                   system(paste("mkdir data/", selected_gene()$gene[1], sep=""))
+                   createsearchfile(selected_gene())
+                   incProgress(0.1, message = paste("Searchfile created for ", selected_gene()$gene[1]))
+                   
+                   #run netMHC on USER ENTRY
                    foreach(i=1:nrow(hla)) %dopar% {
                      system(paste("~/netMHC -f ",
-                     #system(paste("~/shinyNAPaws_testpaths/www/netMHC -f ", #for AWS
+                                  #system(paste("~/shinyNAPaws_testpaths/www/netMHC -f ", #for AWS
                                   paste("data/", storedgene, "netmhc.txt", sep=""), 
                                   " -a ", hla$Allele[i], " > data/", storedgene, "/", hla$Allele[i], ".txt", sep=""))
-                     incProgress(0.05, message = paste("Allele ", hla$Allele[i], "submitted", sep =""))
+                     incProgress(0.07, message = paste("Allele ", hla$Allele[i], "submitted", sep =""))
                    }
                    setProgress(1, message = paste("netMHC complete: ", length(hla), " processed", sep = ""))
                  })
     print(paste("NetMHC search for ", storedgene, " complete.", sep = ""))
-  })
-  output$netmhc_complete <- renderText({
-    run_netMHC()
-  })
-  
-  #Process netMHC output
-  processed_data_test <- eventReactive(input$initiate_processing, {
+    
+    
+    #process netMHC output
     withProgress(message = "Processing netMHC output",
                  detail = "This may take a minute... ", value = 0.1, {
-                     raw_HLAfiles <- list.files(path = paste("data/", selected_gene()$gene[1], sep = ""), pattern = "HLA*",
+                     
+                   
+                   
+                   raw_HLAfiles <- list.files(path = paste("data/", selected_gene()$gene[1], sep = ""), pattern = "HLA*",
                                                 full.names = "TRUE")
                      incProgress(0.005, message = "reading HLA files...")
                      setProgress(0.2)

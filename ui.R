@@ -49,7 +49,6 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                             sidebarLayout(
                               sidebarPanel(width = 3,
                                            useShinyjs(),
-                                           
                                            radioButtons("prot_lib_cust_radio", "Library or Custom?",
                                                         c("Library Search" = "prot_library",
                                                           "Enter your own sequence" = "prot_custom"),
@@ -59,18 +58,10 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                                                        label = 'Select Gene to Analyze',
                                                        choices = select_maps,
                                                        selected = "AKT1"),
-                                           
-                                           
                                            textInput("name_textinput", "Enter gene/protein name:", paste(gene_seq_df$gene[1])),
                                            textInput("geneseq_textinput", "Enter amino acid sequence:", paste(gene_seq_df$seq[1])),
-                                           actionButton("create_searchfile", "Create Searchfile"),
-                                           br(),
-                                           actionButton("run_netMHC", "Run netMHC"),
-                                           br(),
-                                           actionButton("initiate_processing", "Submit"),
-                                           br(),
-                                           br(),
-                                           actionButton("plotselectedmap", "Plot Selected Map TEST")
+                                           actionButton("initiate_processing", "Submit Entry"),
+                                           actionButton("plotselectedmap", "Plot Scores")
                               ),
                               mainPanel(width = 9,
                                         useShinyjs(),
@@ -80,7 +71,6 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                                         plotlyOutput("plot_9aa_out"),
                                         plotlyOutput("plot_17aa_out"),
                                         plotlyOutput("plot_33aa_out"),
-                                        
                                         plotlyOutput("custplot_9aa_out"),
                                         plotlyOutput("custplot_17aa_out"),
                                         plotlyOutput("custplot_33aa_out")
