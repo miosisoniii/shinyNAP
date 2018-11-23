@@ -344,43 +344,7 @@ shinyServer(function(input, output) {
   
   
   
-  #create directory and search file for TEXT PROTEIN
-  # searchfile <- eventReactive(input$create_searchfile, {
-  #   system(paste("mkdir data/", selected_gene()$gene[1], sep=""))
-  #   createsearchfile(selected_gene())
-  #   print(paste("Creation of Searchfile for ", selected_gene()$gene[1], " complete.", sep = ""))
-  # })
-  # output$searchfile_complete <- renderText({
-  #   searchfile()
-  # })
-  
-  #process USER INPUT 
-  # run_netMHC <- eventReactive(input$run_netMHC, {
-  #   storedgene <- selected_gene()$gene[1]
-  #   withProgress(message = "netMHC initialized; please wait.",
-  #                detail = "Running...",
-  #                value = 0.1, {
-  #                  #create searchfile
-  #                  system(paste("mkdir data/", selected_gene()$gene[1], sep=""))
-  #                  createsearchfile(selected_gene())
-  #                  incProgress(0.1, message = paste("Searchfile created for ", selected_gene()$gene[1]))
-  #                  
-  #                  #run netMHC on USER ENTRY
-  #                  foreach(i=1:nrow(hla)) %dopar% {
-  #                    system(paste("~/netMHC -f ",
-  #                    #system(paste("~/shinyNAPaws_testpaths/www/netMHC -f ", #for AWS
-  #                                 paste("data/", storedgene, "netmhc.txt", sep=""), 
-  #                                 " -a ", hla$Allele[i], " > data/", storedgene, "/", hla$Allele[i], ".txt", sep=""))
-  #                    incProgress(0.07, message = paste("Allele ", hla$Allele[i], "submitted", sep =""))
-  #                  }
-  #                  setProgress(1, message = paste("netMHC complete: ", length(hla), " processed", sep = ""))
-  #                })
-  #   print(paste("NetMHC search for ", storedgene, " complete.", sep = ""))
-  # })
-  # output$netmhc_complete <- renderText({
-  #   run_netMHC()
-  # })
-  
+
   #Process USER INPUT
   processed_data_test <- eventReactive(input$initiate_processing, {
     storedgene <- selected_gene()$gene[1]
