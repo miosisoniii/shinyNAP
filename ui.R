@@ -27,6 +27,8 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                                            actionButton("process_pepdata", "Process Data")
                               ),
                               mainPanel(width = 9,
+                                        textOutput("parsetest"),
+                                        textOutput("keeppep"),
                                         tableOutput("neolibtable"),
                                         
                     

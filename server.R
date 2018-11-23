@@ -11,6 +11,24 @@ shinyServer(function(input, output) {
     head(gene_sel_neolib())
   }, rownames = T)
   
+  neoparsetest <- reactive({
+    neolibnetmhc <- readLines("data/searchfiles/neoantigentab/neo_wt_v_mut_netmhc.txt")
+    #filter only lines that include selected gene input
+    indexmatch <- str_which(neolibnetmhc, input$sel_neolib)
+    
+    #lines with selected gene input +1 for entering into netMHC
+    test <- lapply(indexmatch, "+", 1 )
+    #test
+    #indexmatch
+    neolibnetmhc[indexmatch] -> neolibtest
+    neolibtest
+
+  })
+  
+  output$parsetest <- renderText({
+    head(neoparsetest())
+  })
+  
   #shiny js show/hide : NeoAntigen
   observeEvent(input$lib_cust_radio, {
     #when library radio is selected, hide textinput
@@ -51,19 +69,15 @@ shinyServer(function(input, output) {
   })
   #create PEPTIDE searchfile
   searchfile_WTmut <- eventReactive(input$create_pepsearchfile, {
-    system("mkdir data/NeoAntigens") #make directories for each NAP search?
-    #createpep_searchfile(ins_pep_table())
-    #use function from global for PEPTIDE search file OR READ pep file
+    #system("mkdir data/NeoAntigens") #make directories for each NAP search?
+
+
     if (input$lib_cust_radio == "custom") {
       createpep_searchfile(ins_pep_table())
     } else {
       #read in neo df
       createneo_searchfile(gene_sel_neolib())
     }
-      
-    #attempt to use individual search file code for custom/library with if statement
-    #sel_searchfile(lib_cust_select())
-    
     print(paste("Creation of Searchfile for custom NeoAntigen complete.", sep = ""))
   })
   #searchfile complete
@@ -372,9 +386,6 @@ shinyServer(function(input, output) {
     #process netMHC output
     withProgress(message = "Processing netMHC output",
                  detail = "This may take a minute... ", value = 0.1, {
-                     
-                   
-                   
                    raw_HLAfiles <- list.files(path = paste("data/", selected_gene()$gene[1], sep = ""), pattern = "HLA*",
                                                 full.names = "TRUE")
                      incProgress(0.005, message = "reading HLA files...")

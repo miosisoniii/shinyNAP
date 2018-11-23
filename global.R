@@ -8,6 +8,7 @@ require(ggplot2)
 require(plotly)
 registerDoMC(85) #change to edit how many files %dopar% can run in parallel
 require(shinyjs)
+require(stringr)
 
 
 
@@ -81,16 +82,26 @@ createneo_searchfile <- function(sel_neo_df){
   for (i in 1:nrow(sel_neo_df)){
     for (j in 9:26) {
       cat(paste(">", sel_neo_df$gene[i], "_", sel_neo_df$substitution[i],
-                "_", colnames(sel_neo_df[j]),  sep =""))
+                "_", colnames(sel_neo_df)[j], sep =""))
       cat("\n")
-      cat(sel_neo_df[i,j])
+      cat(paste(sel_neo_df[i, j]))
       cat("\n")
     }
   }
   sink()
 } 
-
-
+# 
+# sink(paste("neo_wt_v_mut_netmhc.txt"))
+# for (i in 1:nrow(neomuts)){
+#   for (j in 9:26){
+#     cat(paste(">", neomuts$gene[i], "_", neomuts$substitution[i], 
+#               "_", colnames(neomuts)[j],  sep =""))
+#     cat("\n")
+#     cat(neomuts[i,j])
+#     cat("\n")
+#   }
+# }
+# sink() 
 
 
 
