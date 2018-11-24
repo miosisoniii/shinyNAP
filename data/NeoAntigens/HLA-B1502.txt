@@ -1,5 +1,5 @@
 # /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/bin/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt -a HLA-B1502
-# Sun Nov 18 22:31:50 2018
+# Fri Nov 23 20:18:50 2018
 # User: artemiosisoniii
 # PWD : /Users/artemiosisoniii/shinyNAP
 # -f       data/NeoAntigens/wt_v_mut_netmhc.txt Input file (by default in FASTA format)
@@ -38,7 +38,7 @@
 -----------------------------------------------------------------------------------
   pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
 -----------------------------------------------------------------------------------
-    0    HLA-B1502    CLLDSSGML    CLLDSSGML      0      0      0      0      0    CLLDSSGML           WT1_1         0.282      2360.66     1.00 <= WB
+    0    HLA-B1502    CLLDSSGML    CLLDSSGML      0      0      0      0      0    CLLDSSGML           WT1_1         0.282      2360.66     1.00 <=WB
 -----------------------------------------------------------------------------------
 
 Protein WT1_1. Allele HLA-B1502. Number of high binders 0. Number of weak binders 1. Number of peptides 1
@@ -49,7 +49,7 @@ Protein WT1_1. Allele HLA-B1502. Number of high binders 0. Number of weak binder
 -----------------------------------------------------------------------------------
   pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
 -----------------------------------------------------------------------------------
-    0    HLA-B1502    YLLDSSGML    YLLDSSGML      0      0      0      0      0    YLLDSSGML       Mutant1_2         0.480       278.19     0.17 <= SB
+    0    HLA-B1502    YLLDSSGML    YLLDSSGML      0      0      0      0      0    YLLDSSGML       Mutant1_2         0.480       278.19     0.17 <=SB
 -----------------------------------------------------------------------------------
 
 Protein Mutant1_2. Allele HLA-B1502. Number of high binders 1. Number of weak binders 0. Number of peptides 1

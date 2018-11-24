@@ -1,5 +1,5 @@
 # /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/bin/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt -a HLA-A3207
-# Sun Nov 18 22:31:48 2018
+# Fri Nov 23 20:18:49 2018
 # User: artemiosisoniii
 # PWD : /Users/artemiosisoniii/shinyNAP
 # -f       data/NeoAntigens/wt_v_mut_netmhc.txt Input file (by default in FASTA format)
@@ -49,7 +49,7 @@ Protein WT1_1. Allele HLA-A3207. Number of high binders 0. Number of weak binder
 -----------------------------------------------------------------------------------
   pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
 -----------------------------------------------------------------------------------
-    0    HLA-A3207    YLLDSSGML    YLLDSSGML      0      0      0      0      0    YLLDSSGML       Mutant1_2         0.284      2309.62     1.70 <= WB
+    0    HLA-A3207    YLLDSSGML    YLLDSSGML      0      0      0      0      0    YLLDSSGML       Mutant1_2         0.284      2309.62     1.70 <=WB
 -----------------------------------------------------------------------------------
 
 Protein Mutant1_2. Allele HLA-A3207. Number of high binders 0. Number of weak binders 1. Number of peptides 1

@@ -7,20 +7,31 @@ shinyServer(function(input, output) {
   gene_sel_neolib <- reactive({
     neo_seq_df %>% 
       filter(gene == input$sel_neolib)
-      
-    
   })
-  
-  gene_sel_neolib_sub <-reactive({
-    gene_sel_neolib() %>%
-      filter(substitution == input$select_sub)
+  #render UI select input
+  output$select_sub <- renderUI({
+    subs <- as.vector(unique(gene_sel_neolib()$substitution))
+    selectInput("neo_subs", "Select amino acid substitution/position", 
+                choices = subs) #, multiple = TRUE?
   })
-
+  #subset selection
+  gene_sel_neolib_sub <- reactive({
+    subset(gene_sel_neolib(), substitution %in% input$neo_subs) -> fullsubset
+    fullsubset[1,]
+  })
+  #show output
+  output$neolibtable <- renderTable({ head(gene_sel_neolib_sub()) }, rownames = T)
   
-  output$neolibtable <- renderTable({
-    head(gene_sel_neolib_sub())
-  }, rownames = T)
   
+  
+  
+  
+  
+  
+  
+  
+  
+  ########################################################
   neoparsetest <- reactive({
     neolibnetmhc <- readLines("data/searchfiles/neoantigentab/neo_wt_v_mut_netmhc.txt")
     #filter only lines that include selected gene input
@@ -46,11 +57,13 @@ shinyServer(function(input, output) {
       shinyjs::show("WT_text_in")
       shinyjs::show("MUT_text_in")
       shinyjs::hide("sel_neolib")
+      shinyjs::hide("select_sub")
     }
     if ("library" == input$lib_cust_radio) {
       shinyjs::hide("WT_text_in")
       shinyjs::hide("MUT_text_in")
       shinyjs::show("sel_neolib")
+      shinyjs::show("select_sub")
     }
 
   })
@@ -97,39 +110,10 @@ shinyServer(function(input, output) {
   
   #########################################################################################################
   #neoantigens
-  # ins_neo_table <- reactive({
-  #   neoseq <- (c(input$WT_text_in, input$MUT_text_in))
-  #   neotab$seq <- pepseq
-  #   neotab
-  # })
-  
-  
-  # #create neo searchfile
-  # searchfile_neo <- eventReactive(input$create_pepsearchfile, {
-  #   system("mkdir data/NeoAntigens") #make directories for each NAP search?
-  #   createneo_searchfile(neotab)
-  #   print(paste("Creation of Searchfile for total neoantigen library complete."))
-  # })
-  # searchfile_neo_out <- renderText({
-  #   searchfile_neo()
-  # })
-  
   #run netMHC on peptides
   #enter for loop in here to ensure that only AA's and not random letters 
   #A C D E F G H I K L M N P Q R S T V W Y and X (unknown)
   runpep_netMHC <- eventReactive(input$netmhc_pep, {
-    # withProgress(message = "netMHC initialized; please wait.",
-    #              detail = "Running...",
-    #              value = 0.1, {
-    #                for (i in 1:nrow(hla)){
-    #                  system(paste("~/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
-    #                  #system(paste("www/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
-    #                               " -a ", hla$Allele[i], " > data/NeoAntigens/", hla$Allele[i], ".txt", sep=""))
-    #                  
-    #                  incProgress(0.0095, message = paste("Allele ", hla$Allele[i], " submitted", sep =""))
-    #                }
-    #                setProgress(1)
-    #              })
     withProgress(message = "netMHC initialized; please wait.",
                  detail = "Running...",
                  value = 0.1, {
@@ -423,6 +407,7 @@ shinyServer(function(input, output) {
                      setProgress(0.6, message = "Creating binders")
                      #create binders
                      system(paste("mkdir data/", selected_gene()$gene[1], "/peptides/binders/", sep = ""))
+                     
                      createbinders(selected_gene(), pep_HLAfiles)
 
                      setProgress(0.65, message = "Reading binders files")

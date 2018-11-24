@@ -1,5 +1,5 @@
 # /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/bin/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt -a HLA-A0212
-# Sun Nov 18 22:31:46 2018
+# Fri Nov 23 20:18:48 2018
 # User: artemiosisoniii
 # PWD : /Users/artemiosisoniii/shinyNAP
 # -f       data/NeoAntigens/wt_v_mut_netmhc.txt Input file (by default in FASTA format)
@@ -38,7 +38,7 @@
 -----------------------------------------------------------------------------------
   pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
 -----------------------------------------------------------------------------------
-    0    HLA-A0212    CLLDSSGML    CLLDSSGML      0      0      0      0      0    CLLDSSGML           WT1_1         0.812         7.61     0.09 <= SB
+    0    HLA-A0212    CLLDSSGML    CLLDSSGML      0      0      0      0      0    CLLDSSGML           WT1_1         0.812         7.61     0.09 <=SB
 -----------------------------------------------------------------------------------
 
 Protein WT1_1. Allele HLA-A0212. Number of high binders 1. Number of weak binders 0. Number of peptides 1
@@ -49,7 +49,7 @@ Protein WT1_1. Allele HLA-A0212. Number of high binders 1. Number of weak binder
 -----------------------------------------------------------------------------------
   pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
 -----------------------------------------------------------------------------------
-    0    HLA-A0212    YLLDSSGML    YLLDSSGML      0      0      0      0      0    YLLDSSGML       Mutant1_2         0.854         4.86     0.05 <= SB
+    0    HLA-A0212    YLLDSSGML    YLLDSSGML      0      0      0      0      0    YLLDSSGML       Mutant1_2         0.854         4.86     0.05 <=SB
 -----------------------------------------------------------------------------------
 
 Protein Mutant1_2. Allele HLA-A0212. Number of high binders 1. Number of weak binders 0. Number of peptides 1

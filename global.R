@@ -162,7 +162,6 @@ createtab <- function(combined_table, sel_gene_df) {
         neofreqTCGA <- c(neofreqTCGA, combined_table["HLA_frequency", j])
         hlabinders <- c(hlabinders, substring(colnames(combined_table[j]), 5,9))
       }
-      
       probTCGA <- 1
       if (length(neofreqTCGA) > 0){
         for (k in 1:length(neofreqTCGA)){
@@ -170,7 +169,6 @@ createtab <- function(combined_table, sel_gene_df) {
         }
       }
     }
-    
     probTCGA <- 1-probTCGA
     combined_table$"HLA_frequency"[i] <- probTCGA
     combined_table$"Alleles_bound"[i] <- length(hlabinders)
