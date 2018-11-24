@@ -270,7 +270,7 @@ shinyServer(function(input, output) {
     combined["neogreater", "Allelesbound_greaterneo"] <- length(hlabinders)
     combined["neogreater", "HLAbinders_greaterneo"] <- paste(unlist(hlabinders), collapse = ", ")
 
-    write.csv(combined, "hlaneoprop_map.csv")
+    #write.csv(combined, "hlaneoprop_map.csv")
     combined
   })
 
@@ -655,6 +655,50 @@ output$custplot_9aa_out <- renderPlotly({
     })
   })
 
+  
+  #download protein maps
+  #custom entry
+  output$downloadprotcustmap <- downloadHandler(
+    filename = function() {
+      paste(input$name_textinput, "_map.csv", sep = "")
+    },
+    content = function(file) {
+      write.csv(custplot_33aa(), file, row.names = FALSE)
+    }
+  )
+  
+  #prot/gene library
+  output$downloadprotlibmap <- downloadHandler(
+    filename = function() {
+      paste(input$selectgene, "_map.csv", sep = "")
+    },
+    content = function(file) {
+      write.csv(selected_gene(), file, row.names = FALSE)
+    }
+  )
+  
+  #download neoantigen maps
+  #library
+  # output$downloadneolibmap <- downloadHandler(
+  #   filename = function() {
+  #     paste(input$name_textinput, "_map.csv", sep = "")
+  #   },
+  #   content = function(file) {
+  #     write.csv(custplot_33aa(), file, row.names = FALSE)
+  #   }
+  # )
+  
+  #custom entry
+  output$downloadneocustmap <- downloadHandler(
+    filename = function() {
+      paste("neoantigen_map.csv", sep = "")
+    },
+    content = function(file) {
+      write.csv(neopropdata(), file, row.names = FALSE)
+    }
+  )
+  
+  
   
   
 })
