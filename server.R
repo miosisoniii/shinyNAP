@@ -5,10 +5,20 @@ source("global.R")
 shinyServer(function(input, output) {
   
   gene_sel_neolib <- reactive({
-    neo_seq_df %>% filter(gene == input$sel_neolib)
+    neo_seq_df %>% 
+      filter(gene == input$sel_neolib)
+      
+    
   })
+  
+  gene_sel_neolib_sub <-reactive({
+    gene_sel_neolib() %>%
+      filter(substitution == input$select_sub)
+  })
+
+  
   output$neolibtable <- renderTable({
-    head(gene_sel_neolib())
+    head(gene_sel_neolib_sub())
   }, rownames = T)
   
   neoparsetest <- reactive({
@@ -70,13 +80,11 @@ shinyServer(function(input, output) {
   #create PEPTIDE searchfile
   searchfile_WTmut <- eventReactive(input$create_pepsearchfile, {
     #system("mkdir data/NeoAntigens") #make directories for each NAP search?
-
-
     if (input$lib_cust_radio == "custom") {
       createpep_searchfile(ins_pep_table())
     } else {
       #read in neo df
-      createneo_searchfile(gene_sel_neolib())
+      createneo_searchfile(gene_sel_neolib_sub())
     }
     print(paste("Creation of Searchfile for custom NeoAntigen complete.", sep = ""))
   })
