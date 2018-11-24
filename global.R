@@ -35,6 +35,12 @@ colnames(genetext_table) <- c("gene","unitprot","seq")
 #   }
 #}
 
+#select from data/maps/GENE directory
+select_maps <- list.files(path = paste("data/maps/"))
+
+
+
+
 #Set Sequences
 gene_seq_df <- read.csv("data/gene_seq.csv")
 #Use MYCN Gene Frequency
