@@ -149,6 +149,10 @@ shinyServer(function(input, output) {
   #run netMHC on peptides
   #enter for loop in here to ensure that only AA's and not random letters 
   #A C D E F G H I K L M N P Q R S T V W Y and X (unknown)
+  
+  
+  
+
   runpep_netMHC <- eventReactive(input$netmhc_pep, {
     # withProgress(message = "netMHC initialized; please wait.",
     #              detail = "Running...",
@@ -166,16 +170,17 @@ shinyServer(function(input, output) {
                  detail = "Running...",
                  value = 0.1, {
                    for (i in 1:nrow(hla)){
-                     system(paste("~/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
-                                  #system(paste("www/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
+                     #system(paste("~/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
+                                  system(paste("www/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
                                   " -a ", hla$Allele[i], " > data/NeoAntigens/", hla$Allele[i], ".txt", sep=""))
                      
                      incProgress(0.0095, message = paste("Allele ", hla$Allele[i], " submitted", sep =""))
                    }
                    setProgress(1)
                  })
-    print(paste("NetMHC search for WT sequence ", 
-                input$WT_text_in, " and Mutant sequence ", input$MUT_text_in, " complete.", sep = ""))
+    print(system("whoami"))
+    # print(paste("NetMHC search for WT sequence ", 
+    #             input$WT_text_in, " and Mutant sequence ", input$MUT_text_in, " complete.", sep = ""))
   })
   output$pepnetmhc_complete <- renderText({
     runpep_netMHC()

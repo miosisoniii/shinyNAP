@@ -6,6 +6,7 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                             titlePanel("Custom NeoAntigen"),
                             sidebarLayout(
                               sidebarPanel(width = 3,
+
                                            #testing hiding
                                            useShinyjs(),
                                            radioButtons("lib_cust_radio", "Library or Custom?",
