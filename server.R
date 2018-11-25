@@ -99,7 +99,7 @@ shinyServer(function(input, output) {
       #read in neo df
       createneo_searchfile(gene_sel_neolib_sub())
     }
-    print(paste("Creation of Searchfile for custom NeoAntigen complete.", sep = ""))
+    print(paste("NeoAntigen searchfile creation complete.", sep = ""))
   })
   #searchfile complete
   output$searchfile_pep <- renderText({
@@ -107,12 +107,13 @@ shinyServer(function(input, output) {
   })
   
   
+  #enter for loop in here to ensure that only AA's and not random letters 
+  #A C D E F G H I K L M N P Q R S T V W Y and X (unknown)
+  
   
   #########################################################################################################
   #neoantigens
   #run netMHC on peptides
-  #enter for loop in here to ensure that only AA's and not random letters 
-  #A C D E F G H I K L M N P Q R S T V W Y and X (unknown)
   runpep_netMHC <- eventReactive(input$netmhc_pep, {
     withProgress(message = "netMHC initialized; please wait.",
                  detail = "Running...",
@@ -126,8 +127,14 @@ shinyServer(function(input, output) {
                    }
                    setProgress(1)
                  })
-    print(paste("NetMHC search for WT sequence ", 
-                input$WT_text_in, " and Mutant sequence ", input$MUT_text_in, " complete.", sep = ""))
+    if (input$lib_cust_radio == "custom") {
+      print(paste("NetMHC search for WT sequence ", 
+                  input$WT_text_in, " and Mutant sequence ", input$MUT_text_in, " complete.", sep = ""))
+    } else {
+      print(paste("NetMHC search for ", 
+                  input$sel_neolib, " complete.", sep = ""))
+    }
+    
   })
   output$pepnetmhc_complete <- renderText({
     runpep_netMHC()
@@ -153,7 +160,6 @@ shinyServer(function(input, output) {
     }
 
     pep_files <- list.files(path = paste("data/NeoAntigens/peptides", sep = ""), pattern = "HLA*", full.names = "TRUE")
-
     system(paste("mkdir data/NeoAntigens/peptides/binders/", sep = ""))
     for (f in pep_files){
       a <- read.delim(f ,header=T,stringsAsFactors=F, sep="")
@@ -180,6 +186,21 @@ shinyServer(function(input, output) {
       }
     }
     createtab(combined, ins_pep_table())
+    
+    #if statement for neoantigen library
+    if (input$lib_cust_radio == "custom") {
+      createtab(combined, ins_pep_table())
+    } else {
+      #create neoantigen library data frame from table
+      
+      
+      
+      
+      
+      
+      
+      
+    }
   })
   output$pep_out <- renderTable({
     pep_processed()
@@ -187,32 +208,64 @@ shinyServer(function(input, output) {
   
   #plot peptide/wtmut output from processed peptable
   output$plot_pep_out <- renderPlotly({
-    combined <- pep_processed()
-    combined <- combined[-nrow(combined),] #remove last row
-    combined <- cbind(rownames(combined), data.frame(combined, row.names = NULL)) #melt rownames
-    names(combined)[1] <- "wt_mut" #change rowname to wt_mut
-    combined$wt_mut <- factor(combined$wt_mut, levels = c("WT1_1", "Mutant1_2"))
-    #write.csv(combined, "data/rowname_included_peptidemap.csv")
+    if (input$lib_cust_radio == "custom") {
+      combined <- pep_processed()
+      combined <- combined[-nrow(combined),] #remove last row
+      combined <- cbind(rownames(combined), data.frame(combined, row.names = NULL)) #melt rownames
+      names(combined)[1] <- "wt_mut" #change rowname to wt_mut
+      combined$wt_mut <- factor(combined$wt_mut, levels = c("WT1_1", "Mutant1_2"))
+      #write.csv(combined, "data/rowname_included_peptidemap.csv")
+      
+      combined %>%
+        ggplot(aes(x = wt_mut, y = HLA_frequency, fill = wt_mut,
+                   text = paste("# Alleles Bound: ", Alleles_bound,
+                                "<br>",
+                                "Bound Alleles: ", HLA_binders,
+                                "<br>",
+                                "Frequency Score: ", paste(round(HLA_frequency, digits = 3) * 100, "%", sep = ""),
+                                "<br>",
+                                "Peptide: ", pep
+                   ))) +
+        ylim(c(0,1)) +
+        xlim(c(0, nrow(combined))) +
+        geom_bar(stat = "identity") + #use identity for each column
+        scale_x_discrete() + #use discrete scale of wt/mutant names
+        theme(legend.position = "none") +
+        ggtitle(paste("WT ", input$WT_text_in, "vs. Mutant ", input$MUT_text_in)) +
+        xlab(paste("Peptide")) +
+        ylab("Peptide Scores") -> ggpep
+      ggplotly(ggpep, tooltip = "text")
+    } 
+    else { #for neoantigen library
+      combined <- pep_processed()
+      combined <- combined[-nrow(combined),] #remove last row
+      combined <- cbind(rownames(combined), data.frame(combined, row.names = NULL)) #melt rownames
+      names(combined)[1] <- "wt_mut" #change rowname to wt_mut
+      combined$wt_mut <- factor(combined$wt_mut, levels = c("WT1_1", "Mutant1_2"))
+      
+      combined %>%
+        ggplot(aes(x = wt_mut, y = HLA_frequency, fill = wt_mut,
+                   text = paste("# Alleles Bound: ", Alleles_bound,
+                                "<br>",
+                                "Bound Alleles: ", HLA_binders,
+                                "<br>",
+                                "Frequency Score: ", paste(round(HLA_frequency, digits = 3) * 100, "%", sep = ""),
+                                "<br>",
+                                "Peptide: ", pep
+                   ))) +
+        ylim(c(0,1)) +
+        xlim(c(0, nrow(combined))) +
+        geom_bar(stat = "identity") + #use identity for each column
+        scale_x_discrete() + #use discrete scale of wt/mutant names
+        theme(legend.position = "none") +
+        ggtitle(paste("WT ", input$WT_text_in, "vs. Mutant ", input$MUT_text_in)) +
+        xlab(paste("Peptide")) +
+        ylab("Peptide Scores") -> ggpep
+      ggplotly(ggpep, tooltip = "text")
+      
+      
+    }
     
-    combined %>%
-      ggplot(aes(x = wt_mut, y = HLA_frequency, fill = wt_mut,
-                 text = paste("# Alleles Bound: ", Alleles_bound,
-                              "<br>",
-                              "Bound Alleles: ", HLA_binders,
-                              "<br>",
-                              "Frequency Score: ", paste(round(HLA_frequency, digits = 3) * 100, "%", sep = ""),
-                              "<br>",
-                              "Peptide: ", pep
-                              ))) +
-      ylim(c(0,1)) +
-      xlim(c(0, nrow(combined))) +
-      geom_bar(stat = "identity") + #use identity for each column
-      scale_x_discrete() + #use discrete scale of wt/mutant names
-      theme(legend.position = "none") +
-      ggtitle(paste("WT ", input$WT_text_in, "vs. Mutant ", input$MUT_text_in)) +
-      xlab(paste("Peptide")) +
-      ylab("Peptide Scores") -> ggpep
-    ggplotly(ggpep, tooltip = "text")
   })
 
   

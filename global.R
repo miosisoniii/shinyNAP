@@ -11,14 +11,19 @@ require(shinyjs)
 require(stringr)
 
 
+#Read in frequency file for HLA alleles
+hla <- read.delim('data/HLAtable.txt',header=T, stringsAsFactors=F)
 
-
-
+#select from data/maps/GENE directory
+select_maps <- list.files(path = paste("data/maps/"))
 
 ############################################################################
 #TEXT INPUT PROTEIN
 genetext_table <- data.frame(matrix(ncol = 3, nrow=1))
 colnames(genetext_table) <- c("gene","unitprot","seq")
+
+#read neo table
+neo_seq_df <- read.csv("data/neomuts_table.csv")
 
 
 #read total table of genes
@@ -36,8 +41,7 @@ colnames(genetext_table) <- c("gene","unitprot","seq")
 #   }
 #}
 
-#select from data/maps/GENE directory
-select_maps <- list.files(path = paste("data/maps/"))
+
 
 
 
@@ -68,8 +72,6 @@ createpep_searchfile <- function(sel_gene_df){
   sink()
 }
 
-#read neo table
-neo_seq_df <- read.csv("data/neomuts_table.csv")
 #insert text input pep seq into gene_seq_df
 neotab <- data.frame(matrix(ncol = 3, nrow=nrow(neo_seq_df)))
 colnames(neotab) <- c("gene","unitprot","seq")
@@ -90,25 +92,8 @@ createneo_searchfile <- function(sel_neo_df){
   }
   sink()
 } 
-# 
-# sink(paste("neo_wt_v_mut_netmhc.txt"))
-# for (i in 1:nrow(neomuts)){
-#   for (j in 9:26){
-#     cat(paste(">", neomuts$gene[i], "_", neomuts$substitution[i], 
-#               "_", colnames(neomuts)[j],  sep =""))
-#     cat("\n")
-#     cat(neomuts[i,j])
-#     cat("\n")
-#   }
-# }
-# sink() 
 
 
-
-
-
-#Read in frequency file for HLA alleles
-hla <- read.delim('data/HLAtable.txt',header=T, stringsAsFactors=F)
 ###########
 #protein/gene search
 #creating searchfile for text input
