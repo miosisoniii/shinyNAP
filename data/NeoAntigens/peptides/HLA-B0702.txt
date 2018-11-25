@@ -1,19 +1,2 @@
-  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
-    0    HLA-B0702    YKLVVVGAG    YKLVVVGAG      0      0      0      0      0    YKLVVVGAG   KRAS_G12A_wt1         0.053     28060.58    28.00
-    0    HLA-B0702    YKLVVVGAA    YKLVVVGAA      0      0      0      0      0    YKLVVVGAA  KRAS_G12A_neo1         0.083     20413.12    16.00
-    0    HLA-B0702    KLVVVGAGG    KLVVVGAGG      0      0      0      0      0    KLVVVGAGG   KRAS_G12A_wt2         0.055     27722.60    28.00
-    0    HLA-B0702    KLVVVGAAG    KLVVVGAAG      0      0      0      0      0    KLVVVGAAG  KRAS_G12A_neo2         0.078     21538.31    17.00
-    0    HLA-B0702    LVVVGAGGV    LVVVGAGGV      0      0      0      0      0    LVVVGAGGV   KRAS_G12A_wt3         0.109     15333.97    11.00
-    0    HLA-B0702    LVVVGAAGV    LVVVGAAGV      0      0      0      0      0    LVVVGAAGV  KRAS_G12A_neo3         0.105     15975.84    11.00
-    0    HLA-B0702    VVVGAGGVG    VVVGAGGVG      0      0      0      0      0    VVVGAGGVG   KRAS_G12A_wt4         0.085     19878.04    15.00
-    0    HLA-B0702    VVVGAAGVG    VVVGAAGVG      0      0      0      0      0    VVVGAAGVG  KRAS_G12A_neo4         0.066     24427.52    21.00
-    0    HLA-B0702    VVGAGGVGK    VVGAGGVGK      0      0      0      0      0    VVGAGGVGK   KRAS_G12A_wt5         0.059     26302.21    25.00
-    0    HLA-B0702    VVGAAGVGK    VVGAAGVGK      0      0      0      0      0    VVGAAGVGK  KRAS_G12A_neo5         0.058     26678.23    25.00
-    0    HLA-B0702    VGAGGVGKS    VGAGGVGKS      0      0      0      0      0    VGAGGVGKS   KRAS_G12A_wt6         0.048     29844.67    33.00
-    0    HLA-B0702    VGAAGVGKS    VGAAGVGKS      0      0      0      0      0    VGAAGVGKS  KRAS_G12A_neo6         0.051     28687.15    30.00
-    0    HLA-B0702    GAGGVGKSA    GAGGVGKSA      0      0      0      0      0    GAGGVGKSA   KRAS_G12A_wt7         0.103     16377.33    12.00
-    0    HLA-B0702    GAAGVGKSA    GAAGVGKSA      0      0      0      0      0    GAAGVGKSA  KRAS_G12A_neo7         0.174      7596.46     6.00
-    0    HLA-B0702    AGGVGKSAL    AGGVGKSAL      0      0      0      0      0    AGGVGKSAL   KRAS_G12A_wt8         0.217      4794.06     4.50
-    0    HLA-B0702    AAGVGKSAL    AAGVGKSAL      0      0      0      0      0    AAGVGKSAL  KRAS_G12A_neo8         0.460       343.49     0.90 <=WB
-    0    HLA-B0702    GGVGKSALT    GGVGKSALT      0      0      0      0      0    GGVGKSALT   KRAS_G12A_wt9         0.044     30960.67    37.00
-    0    HLA-B0702    AGVGKSALT    AGVGKSALT      0      0      0      0      0    AGVGKSALT  KRAS_G12A_neo9         0.057     26912.49    26.00
+NA
+NA

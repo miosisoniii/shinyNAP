@@ -60,6 +60,10 @@ peptab <- data.frame(matrix(ncol = 3, nrow=2))
 colnames(peptab) <- c("gene","unitprot","seq")
 peptab$gene <- c("WT1", "Mutant1") 
 
+#LIBRARY NEOANTIGEN TABLE
+neolibtab <- data.frame(matrix(ncol = 3, nrow=18))
+colnames(neolibtab) <- c("gene","unitprot","seq")
+
 #create peptide searchfile
 createpep_searchfile <- function(sel_gene_df){
   sink(paste("data/NeoAntigens/wt_v_mut_netmhc.txt"))
@@ -78,7 +82,7 @@ colnames(neotab) <- c("gene","unitprot","seq")
 neotab$gene <- neo_seq_df$gene
 neotab$seq <- neo_seq_df$pep
 
-#create NEOANTIGEN searchfile function
+#create LIBRARY NEOANTIGEN searchfile function
 createneo_searchfile <- function(sel_neo_df){
   sink(paste("data/NeoAntigens/wt_v_mut_netmhc.txt"))
   for (i in 1:nrow(sel_neo_df)){
@@ -94,8 +98,9 @@ createneo_searchfile <- function(sel_neo_df){
 } 
 
 
-###########
+########################################################################
 #protein/gene search
+########################################################################
 #creating searchfile for text input
 createsearchfile <- function(sel_gene_df){
   for (j in 1:nrow(sel_gene_df)){

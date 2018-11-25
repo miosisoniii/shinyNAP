@@ -73,22 +73,42 @@ shinyServer(function(input, output) {
   #mutant textoutput
   #NOTCH1 MUT - YLLDSSGML
   #########################################################################################################
-  #reactive
+  #insert custom neoantigen into table
   ins_pep_table <- reactive({
     pepseq <- (c(input$WT_text_in, input$MUT_text_in))
     peptab$seq <- pepseq
     peptab
   })
+  
+  #insert library neoantigen wt/mut
+  ins_neolib_table <- reactive({
+    #subset wt/mut
+    gene_sel_neolib_sub()[,9:26] -> seqsubset
+    
+    for (i in 1:nrow(neolibtab)) {
+      neolibtab$gene[i] <- paste(gene_sel_neolib_sub()$gene[1], "_",
+                                 gene_sel_neolib_sub()$substitution[1], "_",
+                                 colnames(seqsubset)[i], sep ="")
+      for (j in 1:nrow(seqsubset)) {
+        for (k in 1:ncol(seqsubset)){
+          #add to seq column
+          neolibtab$seq[i] <- paste(seqsubset[j, k])
+        }
+      }
+    }
+    neolibtab
+  })
+
   #display WT table
-  output$pep_table <- renderTable({
-    ins_pep_table()
+  output$peptable <- renderTable({
+    ins_neolib_table()
     })
   
   #radio selection to be inserted into searchfile creation
   lib_cust_select <- reactive({
     switch(input$lib_cust_radio,
            custom = ins_pep_table(),
-           library = neotab)
+           library = neolibtab)
   })
   #create PEPTIDE searchfile
   searchfile_WTmut <- eventReactive(input$create_pepsearchfile, {
@@ -114,13 +134,15 @@ shinyServer(function(input, output) {
   #########################################################################################################
   #neoantigens
   #run netMHC on peptides
+  #enter for loop in here to ensure that only AA's and not random letters 
+  #A C D E F G H I K L M N P Q R S T V W Y and X (unknown)
   runpep_netMHC <- eventReactive(input$netmhc_pep, {
     withProgress(message = "netMHC initialized; please wait.",
                  detail = "Running...",
                  value = 0.1, {
                    for (i in 1:nrow(hla)){
-                     system(paste("~/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
-                                  #system(paste("www/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
+                     #system(paste("~/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
+                                  system(paste("www/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
                                   " -a ", hla$Allele[i], " > data/NeoAntigens/", hla$Allele[i], ".txt", sep=""))
                      
                      incProgress(0.0095, message = paste("Allele ", hla$Allele[i], " submitted", sep =""))
@@ -134,7 +156,6 @@ shinyServer(function(input, output) {
       print(paste("NetMHC search for ", 
                   input$sel_neolib, " complete.", sep = ""))
     }
-    
   })
   output$pepnetmhc_complete <- renderText({
     runpep_netMHC()
@@ -192,14 +213,7 @@ shinyServer(function(input, output) {
       createtab(combined, ins_pep_table())
     } else {
       #create neoantigen library data frame from table
-      
-      
-      
-      
-      
-      
-      
-      
+      createtab(combined, ins_neolib_table())
     }
   })
   output$pep_out <- renderTable({

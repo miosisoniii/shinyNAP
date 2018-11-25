@@ -6,7 +6,6 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                             titlePanel("Custom NeoAntigen"),
                             sidebarLayout(
                               sidebarPanel(width = 3,
-
                                            useShinyjs(),
                                            radioButtons("lib_cust_radio", "Library or Custom?",
                                                         c("Library Search" = "library",
@@ -28,13 +27,10 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                                            actionButton("process_pepdata", "Process Data")
                               ),
                               mainPanel(width = 9,
-                                        textOutput("parsetest"),
-                                        textOutput("keeppep"),
+                                        # textOutput("parsetest"),
+                                        # textOutput("keeppep"),
                                         tableOutput("neolibtable"),
-                                        
-                    
-                                        
-                                        renderTable("pep_table"),
+                                        tableOutput("peptable"),
                                         textOutput("searchfile_pep"),
                                         br(),
                                         textOutput("pepnetmhc_complete"),

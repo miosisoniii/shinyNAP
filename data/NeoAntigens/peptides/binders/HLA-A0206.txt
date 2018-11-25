@@ -1,2 +1,1 @@
-pos	HLA	peptide	Core	Offset	I_pos	I_len	D_pos	D_len	iCore	Identity	X1.log50k.aff.	Affinity.nM.	X.Rank	BindLevel
-0	HLA-A0206	LVVVGAAGV	LVVVGAAGV	0	0	0	0	0	LVVVGAAGV	KRAS_G12A_neo3	0.716	21.6	0.4	<=SB
+NA.
