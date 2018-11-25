@@ -1,1 +1,233 @@
-netMHC: no binaries found for Darwin_x86_64 /home/shinynapadmin/shinyNAPaws_testpaths/www/netMHC-4.0/Darwin_x86_64/bin/netMHC
+# /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/bin/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt -a HLA-C1402
+# Sat Nov 24 23:54:42 2018
+# User: artemiosisoniii
+# PWD : /Users/artemiosisoniii/shinyNAP
+# -f       data/NeoAntigens/wt_v_mut_netmhc.txt Input file (by default in FASTA format)
+# -a       HLA-C1402            HLA allele name
+# Command line parameters set to:
+#	[-a line]            HLA-C1402            HLA allele name
+#	[-f filename]        data/NeoAntigens/wt_v_mut_netmhc.txt Input file (by default in FASTA format)
+#	[-p]                 0                    Switch on if input is a list of peptides (Peptide format)
+#	[-l string]          9                    Peptide length (multiple lengths separated by comma e.g. 8,9,10)
+#	[-s]                 0                    Sort output on decreasing affinity
+#	[-rth float]         0.500000             Threshold for high binding peptides (%Rank)
+#	[-rlt float]         2.000000             Threshold for low binding peptides (%Rank)
+#	[-listMHC]           0                    Print list of alleles included in netMHC
+#	[-xls]               0                    Save output to xls file
+#	[-xlsfile filename]  NetMHC_out.xls       File name for xls output
+#	[-t float]           -99.900002           Threshold for output
+#	[-thrfmt filename]   /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/data/threshold/%s.thr Format for threshold filenames
+#	[-hlalist filename]  /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/data/allelelist File with covered HLA names
+#	[-rdir filename]     /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64 Home directory for NetMHC
+#	[-tdir filename]     /var/folders/b3/7fbd4fz132s1h3x02t1l_1r40000gn/T/ Temporary directory (Default $$)
+#	[-syn filename]      /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/data/synlists/%s.synlist Format of synlist file
+#	[-v]                 0                    Verbose mode
+#	[-dirty]             0                    Dirty mode, leave tmp dir+files
+#	[-inptype int]       0                    Input type [0] FASTA [1] Peptide
+#	[-version filename]  /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/data/version File with version information
+#	[-w]                 0                    w option for webface
+
+# NetMHC version 4.0
+
+# Read 132 elements on pairlist /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/data/allelelist
+# Input is in FSA format
+
+# Peptide length 9
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    SPALNKMFC    SPALNKMFC      0      0      0      0      0    SPALNKMFC  TP53_C135Y_wt1         0.021     39815.92    38.00
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_wt1. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    SPALNKMFY    SPALNKMFY      0      0      0      0      0    SPALNKMFY TP53_C135Y_neo1         0.076     22082.21    13.00
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_neo1. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    PALNKMFCQ    PALNKMFCQ      0      0      0      0      0    PALNKMFCQ  TP53_C135Y_wt2         0.022     39524.91    38.00
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_wt2. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    PALNKMFYQ    PALNKMFYQ      0      0      0      0      0    PALNKMFYQ TP53_C135Y_neo2         0.027     37393.66    32.00
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_neo2. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    ALNKMFCQL    ALNKMFCQL      0      0      0      0      0    ALNKMFCQL  TP53_C135Y_wt3         0.163      8526.08     5.50
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_wt3. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    ALNKMFYQL    ALNKMFYQL      0      0      0      0      0    ALNKMFYQL TP53_C135Y_neo3         0.087     19527.79    11.00
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_neo3. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    LNKMFCQLA    LNKMFCQLA      0      0      0      0      0    LNKMFCQLA  TP53_C135Y_wt4         0.014     42846.53    50.00
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_wt4. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    LNKMFYQLA    LNKMFYQLA      0      0      0      0      0    LNKMFYQLA TP53_C135Y_neo4         0.015     42739.59    50.00
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_neo4. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    NKMFCQLAK    NKMFCQLAK      0      0      0      0      0    NKMFCQLAK  TP53_C135Y_wt5         0.100     16950.44     9.50
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_wt5. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    NKMFYQLAK    NKMFYQLAK      0      0      0      0      0    NKMFYQLAK TP53_C135Y_neo5         0.140     11009.61     6.50
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_neo5. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    KMFCQLAKT    KMFCQLAKT      0      0      0      0      0    KMFCQLAKT  TP53_C135Y_wt6         0.091     18732.05    11.00
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_wt6. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    KMFYQLAKT    KMFYQLAKT      0      0      0      0      0    KMFYQLAKT TP53_C135Y_neo6         0.104     16188.30     9.00
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_neo6. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    MFCQLAKTC    MFCQLAKTC      0      0      0      0      0    MFCQLAKTC  TP53_C135Y_wt7         0.135     11552.80     7.00
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_wt7. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    MFYQLAKTC    MFYQLAKTC      0      0      0      0      0    MFYQLAKTC TP53_C135Y_neo7         0.477       288.10     0.70 <=WB
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_neo7. Allele HLA-C1402. Number of high binders 0. Number of weak binders 1. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    FCQLAKTCP    FCQLAKTCP      0      0      0      0      0    FCQLAKTCP  TP53_C135Y_wt8         0.039     32927.72    24.00
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_wt8. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    FYQLAKTCP    FYQLAKTCP      0      0      0      0      0    FYQLAKTCP TP53_C135Y_neo8         0.274      2573.96     2.50
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_neo8. Allele HLA-C1402. Number of high binders 0. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    CQLAKTCPV    CQLAKTCPV      0      0      0      0      0    CQLAKTCPV  TP53_C135Y_wt9         0.352      1103.17     1.50 <=WB
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_wt9. Allele HLA-C1402. Number of high binders 0. Number of weak binders 1. Number of peptides 1
+
+-----------------------------------------------------------------------------------
+# Rank Threshold for Strong binding peptides   0.500
+# Rank Threshold for Weak binding peptides   2.000
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+-----------------------------------------------------------------------------------
+    0    HLA-C1402    YQLAKTCPV    YQLAKTCPV      0      0      0      0      0    YQLAKTCPV TP53_C135Y_neo9         0.711        22.85     0.08 <=SB
+-----------------------------------------------------------------------------------
+
+Protein TP53_C135Y_neo9. Allele HLA-C1402. Number of high binders 1. Number of weak binders 0. Number of peptides 1
+
+-----------------------------------------------------------------------------------

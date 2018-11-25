@@ -12,7 +12,9 @@ shinyServer(function(input, output) {
   output$select_sub <- renderUI({
     subs <- as.vector(unique(gene_sel_neolib()$substitution))
     selectInput("neo_subs", "Select amino acid substitution/position", 
-                choices = subs) #, multiple = TRUE?
+                choices = subs, 
+                #remove when completed
+                selected = "C135Y") #, multiple = TRUE?
   })
   #subset selection
   gene_sel_neolib_sub <- reactive({
@@ -80,25 +82,42 @@ shinyServer(function(input, output) {
     peptab
   })
   
+  #the code below gives neo9 seq
   #insert library neoantigen wt/mut
+  # ins_neolib_table <- reactive({
+  #   #subset wt/mut
+  #   gene_sel_neolib_sub()[,9:26] -> seqsubset
+  #   
+  #   for (i in 1:nrow(neolibtab)) {
+  #     neolibtab$gene[i] <- paste(gene_sel_neolib_sub()$gene[1], "_",
+  #                                gene_sel_neolib_sub()$substitution[1], "_",
+  #                                colnames(seqsubset)[i], sep ="")
+  #     for (j in 1:nrow(seqsubset)) {
+  #       for (k in 1:ncol(seqsubset)){
+  #         #add to seq column
+  #         neolibtab$seq[i] <- paste(seqsubset[j, k])
+  #       }
+  #     }
+  #   }
+  #   neolibtab
+  # })
+  
   ins_neolib_table <- reactive({
-    #subset wt/mut
-    gene_sel_neolib_sub()[,9:26] -> seqsubset
-    
+    gene_sel_neolib_sub()[1,9:26] -> seqsubset
+    gather(seqsubset)[,2] -> wtmutseq #transpose data
+    neolibtab$seq <- wtmutseq
     for (i in 1:nrow(neolibtab)) {
       neolibtab$gene[i] <- paste(gene_sel_neolib_sub()$gene[1], "_",
                                  gene_sel_neolib_sub()$substitution[1], "_",
                                  colnames(seqsubset)[i], sep ="")
-      for (j in 1:nrow(seqsubset)) {
-        for (k in 1:ncol(seqsubset)){
-          #add to seq column
-          neolibtab$seq[i] <- paste(seqsubset[j, k])
-        }
-      }
     }
+    
+    
+    
     neolibtab
   })
-
+  
+  
   #display WT table
   output$peptable <- renderTable({
     ins_neolib_table()
@@ -141,10 +160,9 @@ shinyServer(function(input, output) {
                  detail = "Running...",
                  value = 0.1, {
                    for (i in 1:nrow(hla)){
-                     #system(paste("~/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
-                                  system(paste("www/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
+                     system(paste("~/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
+                                  #system(paste("www/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
                                   " -a ", hla$Allele[i], " > data/NeoAntigens/", hla$Allele[i], ".txt", sep=""))
-                     
                      incProgress(0.0095, message = paste("Allele ", hla$Allele[i], " submitted", sep =""))
                    }
                    setProgress(1)
@@ -206,7 +224,6 @@ shinyServer(function(input, output) {
         }
       }
     }
-    createtab(combined, ins_pep_table())
     
     #if statement for neoantigen library
     if (input$lib_cust_radio == "custom") {

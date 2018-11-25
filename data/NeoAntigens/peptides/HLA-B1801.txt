@@ -1,2 +1,19 @@
-NA
-NA
+  pos          HLA      peptide         Core Offset  I_pos  I_len  D_pos  D_len        iCore        Identity 1-log50k(aff) Affinity(nM)    %Rank  BindLevel
+    0    HLA-B1801    SPALNKMFC    SPALNKMFC      0      0      0      0      0    SPALNKMFC  TP53_C135Y_wt1         0.059     26503.61    24.00
+    0    HLA-B1801    SPALNKMFY    SPALNKMFY      0      0      0      0      0    SPALNKMFY TP53_C135Y_neo1         0.242      3641.61     2.50
+    0    HLA-B1801    PALNKMFCQ    PALNKMFCQ      0      0      0      0      0    PALNKMFCQ  TP53_C135Y_wt2         0.025     38046.65    70.00
+    0    HLA-B1801    PALNKMFYQ    PALNKMFYQ      0      0      0      0      0    PALNKMFYQ TP53_C135Y_neo2         0.029     36552.40    65.00
+    0    HLA-B1801    ALNKMFCQL    ALNKMFCQL      0      0      0      0      0    ALNKMFCQL  TP53_C135Y_wt3         0.076     21895.45    15.00
+    0    HLA-B1801    ALNKMFYQL    ALNKMFYQL      0      0      0      0      0    ALNKMFYQL TP53_C135Y_neo3         0.082     20680.79    14.00
+    0    HLA-B1801    LNKMFCQLA    LNKMFCQLA      0      0      0      0      0    LNKMFCQLA  TP53_C135Y_wt4         0.048     29627.81    32.00
+    0    HLA-B1801    LNKMFYQLA    LNKMFYQLA      0      0      0      0      0    LNKMFYQLA TP53_C135Y_neo4         0.056     27249.45    25.00
+    0    HLA-B1801    NKMFCQLAK    NKMFCQLAK      0      0      0      0      0    NKMFCQLAK  TP53_C135Y_wt5         0.084     20087.54    13.00
+    0    HLA-B1801    NKMFYQLAK    NKMFYQLAK      0      0      0      0      0    NKMFYQLAK TP53_C135Y_neo5         0.080     21067.66    14.00
+    0    HLA-B1801    KMFCQLAKT    KMFCQLAKT      0      0      0      0      0    KMFCQLAKT  TP53_C135Y_wt6         0.062     25589.47    22.00
+    0    HLA-B1801    KMFYQLAKT    KMFYQLAKT      0      0      0      0      0    KMFYQLAKT TP53_C135Y_neo6         0.060     26249.32    23.00
+    0    HLA-B1801    MFCQLAKTC    MFCQLAKTC      0      0      0      0      0    MFCQLAKTC  TP53_C135Y_wt7         0.119     13747.62     7.50
+    0    HLA-B1801    MFYQLAKTC    MFYQLAKTC      0      0      0      0      0    MFYQLAKTC TP53_C135Y_neo7         0.160      8817.86     4.50
+    0    HLA-B1801    FCQLAKTCP    FCQLAKTCP      0      0      0      0      0    FCQLAKTCP  TP53_C135Y_wt8         0.056     27320.89    26.00
+    0    HLA-B1801    FYQLAKTCP    FYQLAKTCP      0      0      0      0      0    FYQLAKTCP TP53_C135Y_neo8         0.078     21392.91    15.00
+    0    HLA-B1801    CQLAKTCPV    CQLAKTCPV      0      0      0      0      0    CQLAKTCPV  TP53_C135Y_wt9         0.078     21438.34    15.00
+    0    HLA-B1801    YQLAKTCPV    YQLAKTCPV      0      0      0      0      0    YQLAKTCPV TP53_C135Y_neo9         0.132     11983.25     6.50

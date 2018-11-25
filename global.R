@@ -9,6 +9,7 @@ require(plotly)
 registerDoMC(85) #change to edit how many files %dopar% can run in parallel
 require(shinyjs)
 require(stringr)
+require(tidyr)
 
 
 #Read in frequency file for HLA alleles

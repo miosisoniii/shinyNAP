@@ -1,1 +1,2 @@
-NA.
+pos	HLA	peptide	Core	Offset	I_pos	I_len	D_pos	D_len	iCore	Identity	X1.log50k.aff.	Affinity.nM.	X.Rank	BindLevel
+0	HLA-B3501	SPALNKMFY	SPALNKMFY	0	0	0	0	0	SPALNKMFY	TP53_C135Y_neo1	0.578	95.67	0.5	<=SB
