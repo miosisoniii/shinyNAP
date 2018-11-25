@@ -15,7 +15,7 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                                            ),
                                            selectInput("sel_neolib", "Select Gene from Library",
                                                        choices = unique(neo_seq_df$gene),
-                                                       selected = "TP53"),
+                                                       selected = "KRAS"),
                                            uiOutput("select_sub"),
                                            
                                            textInput("WT_text_in", "Wild Type Sequence:", "CLLDSSGML"),
