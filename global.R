@@ -178,7 +178,7 @@ createtab <- function(combined_table, sel_gene_df) {
     combined_table$aa[i] <- substr(sel_gene_df$seq[r], combined_table$position[i], combined_table$position[i])
     combined_table$pep[i] <- substr(sel_gene_df$seq[r], combined_table$position[i], (as.numeric(combined_table$position[i])+8))
   }
-  #write.csv(combined_table, "peptidemap.csv")
+  write.csv(combined_table, paste("peptidemap.csv"))
   combined_table
   
 }

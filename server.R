@@ -313,7 +313,6 @@ shinyServer(function(input, output) {
     neofreqTCGA <- c()
     hlabinders <- c()
     combined["neogreater",] <- ""
-
     for (j in 1:84){
       # set WT vs neoantigen binders
       neobind <- F
