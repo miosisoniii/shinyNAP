@@ -166,6 +166,25 @@ createtab <- function(combined_table, sel_gene_df) {
     combined_table$"HLA_binders"[i] <- paste(unlist(hlabinders), collapse = ", ")
   }
   
+  #code for creating table for neo lib
+  if (len(row.names(combined_table)) > 9) { #9 is the length of "mutant1_2" in custom neoantigen table
+    combined_table$position <- row.names(combined_table)
+    combined_table$gene <- gsub( "_.*$", "", row.names(combined_table))
+    for (i in 1:nrow(combined_table)){
+      #column that produces amino acid position
+      combined_table$position[i] <- sub('.*\\_', '', row.names(combined_table)[i])
+    }
+  } else { #normal/custom neoantigen
+    combined_table$position <- row.names(combined_table)
+    combined_table$gene <- gsub( "_.*$", "", row.names(combined_table))
+    for (i in 1:nrow(combined_table)){
+      #column that produces amino acid position
+      combined_table$position[i] <- sub('.*\\_', '', row.names(combined_table)[i])
+    }
+  }
+  
+  #code takes "_" and changes MYCN_1 to 1, need "xxxx_xxxx_wt1" to become "1"
+  #code for creating table for normal tables (neo cust, gene cust/lib)
   combined_table$position <- row.names(combined_table)
   combined_table$gene <- gsub( "_.*$", "", row.names(combined_table))
   for (i in 1:nrow(combined_table)){

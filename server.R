@@ -131,7 +131,7 @@ shinyServer(function(input, output) {
   })
   #create PEPTIDE searchfile
   searchfile_WTmut <- eventReactive(input$create_pepsearchfile, {
-    #system("mkdir data/NeoAntigens") #make directories for each NAP search?
+    
     if (input$lib_cust_radio == "custom") {
       createpep_searchfile(ins_pep_table())
     } else {
