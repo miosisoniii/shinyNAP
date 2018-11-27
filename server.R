@@ -234,7 +234,8 @@ shinyServer(function(input, output) {
     }
   })
   output$pep_out <- renderTable({
-    pep_processed()
+    #show last 10 columns of table for testing
+    pep_processed()[,tail(colnames(pep_processed()), 10)]
   }, rownames = TRUE)
   
   #plot peptide/wtmut output from processed peptable
@@ -271,11 +272,11 @@ shinyServer(function(input, output) {
       combined <- pep_processed()
       combined <- combined[-nrow(combined),] #remove last row
       combined <- cbind(rownames(combined), data.frame(combined, row.names = NULL)) #melt rownames
-      names(combined)[1] <- "wt_mut" #change rowname to wt_mut
-      combined$wt_mut <- factor(combined$wt_mut, levels = c("WT1_1", "Mutant1_2"))
+      names(combined)[1] <- "wt_mut" #change column name to wt_mut
+      combined$wt_mut <- factor(combined$wt_mut, levels = combined$wt_mut)
       
       combined %>%
-        ggplot(aes(x = wt_mut, y = HLA_frequency, fill = wt_mut,
+        ggplot(aes(x = as.factor(wt_mut), y = HLA_frequency, fill = wt_mut,
                    text = paste("# Alleles Bound: ", Alleles_bound,
                                 "<br>",
                                 "Bound Alleles: ", HLA_binders,
@@ -289,7 +290,7 @@ shinyServer(function(input, output) {
         geom_bar(stat = "identity") + #use identity for each column
         scale_x_discrete() + #use discrete scale of wt/mutant names
         theme(legend.position = "none") +
-        ggtitle(paste("WT ", input$WT_text_in, "vs. Mutant ", input$MUT_text_in)) +
+        ggtitle(paste("Gene selected: ", input$sel_neolib)) +
         xlab(paste("Peptide")) +
         ylab("Peptide Scores") -> ggpep
       ggplotly(ggpep, tooltip = "text")
@@ -321,7 +322,7 @@ shinyServer(function(input, output) {
       if (as.numeric(combined[1, j]) > 0){
         WTbind <- T
       }
-      if (as.numeric(combined[2,j] > 0)){
+      if (as.numeric(combined[2, j] > 0)){
         neobind <- T
       }
       # set HLAs for which neoantigen binds more strongly than WT
@@ -353,7 +354,7 @@ shinyServer(function(input, output) {
     combined["neogreater", "Allelesbound_greaterneo"] <- length(hlabinders)
     combined["neogreater", "HLAbinders_greaterneo"] <- paste(unlist(hlabinders), collapse = ", ")
 
-    write.csv(combined, "hlaneoprop_map.csv")
+    #write.csv(combined, "hlaneoprop_map.csv")
     combined
   })
 
