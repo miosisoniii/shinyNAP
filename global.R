@@ -166,31 +166,7 @@ createtab <- function(combined_table, sel_gene_df) {
     combined_table$"HLA_binders"[i] <- paste(unlist(hlabinders), collapse = ", ")
   }
   
-  #code for creating table for neo lib
-  if (length(row.names(combined_table)) > 9) { #9 is the length of "mutant1_2" in custom neoantigen
-    combined_table$position <- row.names(combined_table)
-    combined_table$gene <- gsub( "_.*$", "", row.names(combined_table))
-    for (i in 1:nrow(combined_table)){
-      #column that produces amino acid position
-      # combined_table$position[i] <- sub('.*\\_', '', row.names(combined_table)[i])
-      combined_table$position[i] <- sub('.*\\_', '', i)
-      r <- match(gsub(" ", "", combined_table$gene[i]), sel_gene_df$gene)
-      combined_table$aa[i] <- substr(sel_gene_df$seq[r], combined_table$position[i], combined_table$position[i])
-      combined_table$pep[i] <- substr(sel_gene_df$seq[r], combined_table$position[i], (as.numeric(combined_table$position[i])+8))
-    }
-  } else { #normal/custom neoantigen
-    combined_table$position <- row.names(combined_table)
-    combined_table$gene <- gsub( "_.*$", "", row.names(combined_table))
-    for (i in 1:nrow(combined_table)){
-      #column that produces amino acid position
-      combined_table$position[i] <- sub('.*\\_', '', row.names(combined_table)[i])
-      for (i in 1:nrow(combined_table)){
-        r <- match(gsub(" ", "", combined_table$gene[i]), sel_gene_df$gene)
-        combined_table$aa[i] <- substr(sel_gene_df$seq[r], combined_table$position[i], combined_table$position[i])
-        combined_table$pep[i] <- substr(sel_gene_df$seq[r], combined_table$position[i], (as.numeric(combined_table$position[i])+8))
-      }
-    }
-  }
+  
   
   #code takes "_" and changes MYCN_1 to 1, need "xxxx_xxxx_wt1" to become "1"
   #code for creating table for normal tables (neo cust, gene cust/lib)
@@ -200,9 +176,9 @@ createtab <- function(combined_table, sel_gene_df) {
   #   #column that produces amino acid position
   #   combined_table$position[i] <- sub('.*\\_', '', row.names(combined_table)[i])
   # }
-  
-  
-  
+
+
+
   # for (i in 1:nrow(combined_table)){
   #   r <- match(gsub(" ", "", combined_table$gene[i]), sel_gene_df$gene)
   #   combined_table$aa[i] <- substr(sel_gene_df$seq[r], combined_table$position[i], combined_table$position[i])

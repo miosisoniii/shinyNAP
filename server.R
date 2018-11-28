@@ -111,9 +111,6 @@ shinyServer(function(input, output) {
                                  gene_sel_neolib_sub()$substitution[1], "_",
                                  colnames(seqsubset)[i], sep ="")
     }
-    
-    
-    
     neolibtab
   })
   
@@ -225,13 +222,35 @@ shinyServer(function(input, output) {
       }
     }
     
-    #if statement for neoantigen library
+    #if statement for custom
     if (input$lib_cust_radio == "custom") {
-      createtab(combined, ins_pep_table())
+      createtab(combined, ins_pep_table()) -> combined
+      combined$position <- row.names(combined)
+      combined$gene <- gsub( "_.*$", "", row.names(combined))
+      for (i in 1:nrow(combined)){
+        combined$position[i] <- sub('.*\\_', '', row.names(combined)[i])
+      }
+      for (i in 1:nrow(combined)){
+        r <- match(gsub(" ", "", combined$gene[i]), ins_pep_table()$gene)
+        combined$aa[i] <- substr(ins_pep_table()$seq[r], combined$position[i], combined$position[i])
+        combined$pep[i] <- substr(ins_pep_table()$seq[r], combined$position[i], (as.numeric(combined$position[i])+8))
+      }
     } else {
       #create neoantigen library data frame from table
-      createtab(combined, ins_neolib_table())
+      createtab(combined, ins_neolib_table()) -> combined
+      combined$position <- row.names(combined)
+      combined$gene <- gsub( "_.*$", "", row.names(combined))
+
+      for (i in 1:nrow(combined)){
+        combined$position[i] <- sub('.*\\_', '', i)
+      }
+      for (i in 1:nrow(combined)){
+        r <- match(gsub(" ", "", combined$gene[i]), ins_neolib_table()$gene)
+        combined$aa[i] <- substr(ins_neolib_table()$seq[r], combined$position[i], combined$position[i])
+        combined$pep[i] <- substr(ins_neolib_table()$seq[r], combined$position[i], (as.numeric(combined$position[i])+8))
+      }
     }
+    combined
   })
   output$pep_out <- renderTable({
     #show last 10 columns of table for testing
@@ -274,9 +293,15 @@ shinyServer(function(input, output) {
       combined <- cbind(rownames(combined), data.frame(combined, row.names = NULL)) #melt rownames
       names(combined)[1] <- "wt_mut" #change column name to wt_mut
       combined$wt_mut <- factor(combined$wt_mut, levels = combined$wt_mut)
-      
+      combined$libnames <- c("wt1", "neo1", "wt2", "neo2", "wt3", "neo3", "wt4", "neo4", 
+                 "wt5", "neo5", "wt6", "neo6", "wt7", "neo7", "wt8", "neo8", "wt9", "neo9")
+      combined$type <- c("wt", "neo", "wt", "neo", "wt", "neo", "wt", "neo", 
+                             "wt", "neo", "wt", "neo", "wt", "neo", "wt", "neo", "wt", "neo")
+      #attempt to facet
+      # combined$pair <- c("pair1", "pair1", "pair2", "pair2", "pair3", "pair3", "pair4", "pair4", 
+      #                    "pair5", "pair5", "pair6", "pair6", "pair7", "pair7", "pair8", "pair8", "pair9", "pair9")
       combined %>%
-        ggplot(aes(x = as.factor(wt_mut), y = HLA_frequency, fill = wt_mut,
+        ggplot(aes(x = as.factor(wt_mut), y = HLA_frequency, fill = type,
                    text = paste("# Alleles Bound: ", Alleles_bound,
                                 "<br>",
                                 "Bound Alleles: ", HLA_binders,
@@ -285,31 +310,22 @@ shinyServer(function(input, output) {
                                 "<br>",
                                 "Peptide: ", pep
                    ))) +
+        #facet
+        #facet_grid(. ~ pair) +
         ylim(c(0,1)) +
         xlim(c(0, nrow(combined))) +
         geom_bar(stat = "identity") + #use identity for each column
-        scale_x_discrete() + #use discrete scale of wt/mutant names
+        scale_x_discrete(labels = combined$libnames) + #use discrete scale of wt/mutant names
         theme(legend.position = "none") +
         ggtitle(paste("Gene selected: ", input$sel_neolib)) +
-        xlab(paste("Peptide")) +
+        xlab(paste("WT/Mutant Peptides")) +
         ylab("Peptide Scores") -> ggpep
       ggplotly(ggpep, tooltip = "text")
-      
-      
     }
-    
   })
-
-  
   #neoantigen proprortion to wt
   neopropdata <- reactive({
     combined <- pep_processed()
-    #combined <- combined[-nrow(combined),] #remove last row
-    #combined <- cbind(rownames(combined), data.frame(combined, row.names = NULL)) #melt rownames
-    #names(combined)[1] <- "wt_mut" #change colname to wt_mut
-    #combined$wt_mut <- factor(combined$wt_mut, levels = c("WT1_1", "Mutant1_2"))
-    #write.csv(combined, "data/rowname_included_peptidemap.csv")
-    
     #loop through HLA-containing columns
     neofreqTCGA <- c()
     hlabinders <- c()
@@ -349,30 +365,53 @@ shinyServer(function(input, output) {
       }
     }
     probTCGA <- 1 - probTCGA
-
     combined["neogreater", "HLAfreq_greaterneo"] <- probTCGA
     combined["neogreater", "Allelesbound_greaterneo"] <- length(hlabinders)
     combined["neogreater", "HLAbinders_greaterneo"] <- paste(unlist(hlabinders), collapse = ", ")
-
-    #write.csv(combined, "hlaneoprop_map.csv")
-    combined
+    combined 
+    
+    #this is the code to attempt to populate neo proportions table
+  #   combined <- combined[-nrow(combined),] #remove last row
+  #   combined <- cbind(rownames(combined), data.frame(combined, row.names = NULL)) #melt rownames
+  #   names(combined)[1] <- "wt_mut" #change colname to wt_mut
+  #   combined$wt_mut <- factor(combined$wt_mut, levels = combined$wt_mut)
+  #   combined -> neoprop
+  #   
+  #   ######################################################################
+  #   #code to populate aa/pep
+  #   ins_neolib_table() -> neomuts
+  #   neomuts$ID <- paste(neomuts$gene, neomuts$substitution, sep="_")
+  #   
+  #   neoprop$ID <- gsub("_([^_]*)$", "", rownames(combined))
+  #   
+  #   for (i in 1:nrow(neoprop)){
+  #     neoprop$pos[i] <- strsplit(rownames(neoprop), "_")[[1]][3]
+  #   }
+  #   
+  #   for (i in 1:nrow(neoprop)){
+  #     r <- match(neoprop$ID, neomuts$ID)
+  #     for (j in 9:26){
+  #       if (grepl(neoprop$position[i], colnames(neomuts)[j])){
+  #         neoprop$pep[i] <- neomuts[r,j]
+  #       }
+  #     }
+  #   }
+  #   neoprop
   })
-
+  #display final output of proportions table
   output$HLAneo_prop_out <- renderTable({
-    neopropdata()
+    neopropdata() %>% 
+      select(HLAfreq_greaterneo, Allelesbound_greaterneo, HLAbinders_greaterneo) -> neo_subset
+    tail(neo_subset, 1)
   },rownames = TRUE)
-
-  
   #################################################################################
   #code for running the gene search
   #################################################################################
-  
   observeEvent(input$prot_lib_cust_radio, {
     #when library radio is selected, hide textinput
     if ("prot_custom" == input$prot_lib_cust_radio) {
       shinyjs::show("initiate_processing")
       shinyjs::hide("plotselectedmap")
-      
       shinyjs::show("name_textinput")
       shinyjs::show("geneseq_textinput")
       shinyjs::hide("selectgene")
@@ -418,7 +457,6 @@ shinyServer(function(input, output) {
            gene_custom = ins_gene_table(),
            gene_library = selected_gene())
   })
-
   #CUSTOM PROTEIN SEQ
   ins_gene_table <- reactive({
     geneseq <- input$geneseq_textinput
@@ -429,12 +467,9 @@ shinyServer(function(input, output) {
   })
   #display gene table
   output$gene_table <- renderTable({
-    ins_gene_table()
+    ins_gene_table() 
   })
   
-  
-  
-
   #Process USER INPUT
   processed_data_test <- eventReactive(input$initiate_processing, {
     storedgene <- selected_gene()$gene[1]
@@ -457,7 +492,6 @@ shinyServer(function(input, output) {
                    setProgress(1, message = paste("netMHC complete: ", length(hla), " processed", sep = ""))
                  })
     print(paste("NetMHC search for ", storedgene, " complete.", sep = ""))
-    
     
     #process netMHC output
     withProgress(message = "Processing netMHC output",
@@ -520,7 +554,6 @@ shinyServer(function(input, output) {
                      createtab(combined, selected_gene())
                  })
   })
-  
   
   #read in data/maps/GENE.txt files
   read_maps <- eventReactive(input$plotselectedmap, {
@@ -738,12 +771,4 @@ output$custplot_9aa_out <- renderPlotly({
       ggplotly(gg33, tooltip = "text")
     })
   })
-
-  
-  
 })
-
-
-
-
-
