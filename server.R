@@ -60,12 +60,16 @@ shinyServer(function(input, output) {
       shinyjs::show("MUT_text_in")
       shinyjs::hide("sel_neolib")
       shinyjs::hide("select_sub")
+      shinyjs::show("downloadneocustmap")
+
     }
     if ("library" == input$lib_cust_radio) {
       shinyjs::hide("WT_text_in")
       shinyjs::hide("MUT_text_in")
       shinyjs::show("sel_neolib")
       shinyjs::show("select_sub")
+      shinyjs::hide("downloadneocustmap")
+      
     }
 
   })
@@ -127,21 +131,21 @@ shinyServer(function(input, output) {
            library = neolibtab)
   })
   #create PEPTIDE searchfile
-  searchfile_WTmut <- eventReactive(input$create_pepsearchfile, {
-    
-    if (input$lib_cust_radio == "custom") {
-      createpep_searchfile(ins_pep_table())
-    } else {
-      #read in neo df
-      createneo_searchfile(gene_sel_neolib_sub())
-    }
-    print(paste("NeoAntigen searchfile creation complete.", sep = ""))
-  })
-  #searchfile complete
-  output$searchfile_pep <- renderText({
-    searchfile_WTmut()
-  })
-  
+  # searchfile_WTmut <- eventReactive(input$create_pepsearchfile, {
+  #   
+  #   if (input$lib_cust_radio == "custom") {
+  #     createpep_searchfile(ins_pep_table())
+  #   } else {
+  #     #read in neo df
+  #     createneo_searchfile(gene_sel_neolib_sub())
+  #   }
+  #   print(paste("NeoAntigen searchfile creation complete.", sep = ""))
+  # })
+  # #searchfile complete
+  # output$searchfile_pep <- renderText({
+  #   searchfile_WTmut()
+  # })
+  # 
   
   #enter for loop in here to ensure that only AA's and not random letters 
   #A C D E F G H I K L M N P Q R S T V W Y and X (unknown)
@@ -152,7 +156,42 @@ shinyServer(function(input, output) {
   #run netMHC on peptides
   #enter for loop in here to ensure that only AA's and not random letters 
   #A C D E F G H I K L M N P Q R S T V W Y and X (unknown)
-  runpep_netMHC <- eventReactive(input$netmhc_pep, {
+  # runpep_netMHC <- eventReactive(input$netmhc_pep, {
+  #   withProgress(message = "netMHC initialized; please wait.",
+  #                detail = "Running...",
+  #                value = 0.1, {
+  #                  for (i in 1:nrow(hla)){
+  #                    system(paste("~/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
+  #                                 #system(paste("www/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt",
+  #                                 " -a ", hla$Allele[i], " > data/NeoAntigens/", hla$Allele[i], ".txt", sep=""))
+  #                    incProgress(0.0095, message = paste("Allele ", hla$Allele[i], " submitted", sep =""))
+  #                  }
+  #                  setProgress(1)
+  #                })
+  #   if (input$lib_cust_radio == "custom") {
+  #     print(paste("NetMHC search for WT sequence ", 
+  #                 input$WT_text_in, " and Mutant sequence ", input$MUT_text_in, " complete.", sep = ""))
+  #   } else {
+  #     print(paste("NetMHC search for ", 
+  #                 input$sel_neolib, " complete.", sep = ""))
+  #   }
+  # })
+  # output$pepnetmhc_complete <- renderText({
+  #   runpep_netMHC()
+  # })
+  
+  pep_processed <- eventReactive(input$process_pepdata, {
+    #create neoantigen search files
+    if (input$lib_cust_radio == "custom") {
+      createpep_searchfile(ins_pep_table())
+    } else {
+      #read in neo df
+      createneo_searchfile(gene_sel_neolib_sub())
+    }
+    print(paste("NeoAntigen searchfile creation complete.", sep = ""))
+    
+    
+    #run netMHC
     withProgress(message = "netMHC initialized; please wait.",
                  detail = "Running...",
                  value = 0.1, {
@@ -171,12 +210,8 @@ shinyServer(function(input, output) {
       print(paste("NetMHC search for ", 
                   input$sel_neolib, " complete.", sep = ""))
     }
-  })
-  output$pepnetmhc_complete <- renderText({
-    runpep_netMHC()
-  })
-  
-  pep_processed <- eventReactive(input$process_pepdata, {
+    
+    
     pepraw_HLAfiles <- list.files(path = paste("data/NeoAntigens"), pattern = "HLA*", full.names = "TRUE")
     #remove blanks
     system(paste("mkdir data/NeoAntigens/peptides/"))
@@ -368,7 +403,6 @@ shinyServer(function(input, output) {
     combined["neogreater", "HLAfreq_greaterneo"] <- probTCGA
     combined["neogreater", "Allelesbound_greaterneo"] <- length(hlabinders)
     combined["neogreater", "HLAbinders_greaterneo"] <- paste(unlist(hlabinders), collapse = ", ")
-<<<<<<< HEAD
     combined 
     
     #this is the code to attempt to populate neo proportions table
@@ -398,11 +432,9 @@ shinyServer(function(input, output) {
   #     }
   #   }
   #   neoprop
-=======
 
     #write.csv(combined, "hlaneoprop_map.csv")
     combined
->>>>>>> mapdownload
   })
   #display final output of proportions table
   output$HLAneo_prop_out <- renderTable({
@@ -428,6 +460,10 @@ shinyServer(function(input, output) {
       shinyjs::show("custplot_9aa_out")
       shinyjs::show("custplot_17aa_out")
       shinyjs::show("custplot_33aa_out")
+      
+      shinyjs::hide("downloadprotlibmap")
+      shinyjs::show("downloadprotcustmap")
+      
     }
     if ("prot_library" == input$prot_lib_cust_radio) {
       #show submit library action buttons for plotting
@@ -444,6 +480,9 @@ shinyServer(function(input, output) {
       shinyjs::hide("custplot_9aa_out")
       shinyjs::hide("custplot_17aa_out")
       shinyjs::hide("custplot_33aa_out")
+      
+      shinyjs::show("downloadprotlibmap")
+      shinyjs::hide("downloadprotcustmap")
     }
   })
   
@@ -777,9 +816,6 @@ output$custplot_9aa_out <- renderPlotly({
       ggplotly(gg33, tooltip = "text")
     })
   })
-<<<<<<< HEAD
-=======
-
   
   #download protein maps
   #custom entry
@@ -822,9 +858,4 @@ output$custplot_9aa_out <- renderPlotly({
       write.csv(neopropdata(), file, row.names = FALSE)
     }
   )
-  
-  
-  
-  
->>>>>>> mapdownload
 })
