@@ -24,7 +24,10 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                                            br(),
                                            actionButton("netmhc_pep", "Run netMHC"),
                                            br(),
-                                           actionButton("process_pepdata", "Process Data")
+                                           actionButton("process_pepdata", "Process Data"),
+                                           br(),
+                                           #downloadButton("downloadneolibmap", "Download Neoantigen Map"),
+                                           downloadButton("downloadneocustmap", "Download Map")
                               ),
                               mainPanel(width = 9,
                                         #tableOutput("pep_out"),
@@ -56,10 +59,14 @@ ui <- navbarPage("ShinyNAP (NeoAntigen Portal)",
                                                        label = 'Select Gene to Analyze',
                                                        choices = select_maps,
                                                        selected = "AKT1"),
+                                           
                                            textInput("name_textinput", "Enter gene/protein name:", paste(gene_seq_df$gene[1])),
                                            textInput("geneseq_textinput", "Enter amino acid sequence:", paste(gene_seq_df$seq[1])),
                                            actionButton("initiate_processing", "Submit Entry"),
-                                           actionButton("plotselectedmap", "Plot Scores")
+                                           actionButton("plotselectedmap", "Plot Scores"),
+                                           br(),
+                                           downloadButton("downloadprotlibmap", "Download Protein Map"),
+                                           downloadButton("downloadprotcustmap", "Download Map")
                               ),
                               mainPanel(width = 9,
                                         useShinyjs(),

@@ -1,5 +1,9 @@
 # /Users/artemiosisoniii/CHOPprojects/CancerVaccineApp/Data/netMHC-4.0/Darwin_x86_64/bin/netMHC -f data/NeoAntigens/wt_v_mut_netmhc.txt -a HLA-B5401
+<<<<<<< HEAD
 # Tue Nov 27 00:24:37 2018
+=======
+# Fri Nov 23 21:26:06 2018
+>>>>>>> mapdownload
 # User: artemiosisoniii
 # PWD : /Users/artemiosisoniii/shinyNAP
 # -f       data/NeoAntigens/wt_v_mut_netmhc.txt Input file (by default in FASTA format)
