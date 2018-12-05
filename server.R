@@ -24,15 +24,6 @@ shinyServer(function(input, output) {
   #show output
   output$neolibtable <- renderTable({ head(gene_sel_neolib_sub()) }, rownames = T)
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
   ########################################################
   neoparsetest <- reactive({
     neolibnetmhc <- readLines("data/searchfiles/neoantigentab/neo_wt_v_mut_netmhc.txt")
