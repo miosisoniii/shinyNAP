@@ -1,0 +1,11 @@
+*.Rproj.user/**
+*.Rhistory
+*.RData
+*.Ruserdata
+*.txt
+*HLA-*.txt
+*.Rproj.user
+*.Rproj
+*.gitattributes
+www/
+*.csv
