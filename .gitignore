@@ -2,6 +2,8 @@
 *.Rhistory
 *.RData
 *.Ruserdata
+<<<<<<< HEAD
 *.txt
+*HLA-*.txt
 *.Rproj.user
 .Rproj.user
