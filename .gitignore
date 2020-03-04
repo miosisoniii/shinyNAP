@@ -5,3 +5,7 @@
 shinyNAP.Rproj
 HLA-*.txt
 .Rproj.user
+*.Rproj
+www/
+data/
+.gitattributes
