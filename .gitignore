@@ -1,7 +1,7 @@
-.Rproj.user/**
-.Rhistory
-.RData
-.Ruserdata
-shinyNAP.Rproj
-HLA-*.txt
+*.Rproj.user/**
+*.Rhistory
+*.RData
+*.Ruserdata
+*.txt
 *.Rproj.user
+.Rproj.user
