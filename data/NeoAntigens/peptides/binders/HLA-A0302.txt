@@ -1,2 +1,0 @@
-pos	HLA	peptide	Core	Offset	I_pos	I_len	D_pos	D_len	iCore	Identity	X1.log50k.aff.	Affinity.nM.	X.Rank	BindLevel
-0	HLA-A0302	NKMFCQLAK	NKMFCQLAK	0	0	0	0	0	NKMFCQLAK	TP53_C135Y_wt5	0.164	8476.78	0.04	<=SB

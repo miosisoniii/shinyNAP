@@ -1,3 +1,0 @@
-pos	HLA	peptide	Core	Offset	I_pos	I_len	D_pos	D_len	iCore	Identity	X1.log50k.aff.	Affinity.nM.	X.Rank	BindLevel
-0	HLA-A2403	CFYPDEDDF	CFYPDEDDF	0	0	0	0	0	CFYPDEDDF	MYCN_27	0.761	13.32	0.15	<=SB
-0	HLA-A2403	NYAAPSPYV	NYAAPSPYV	0	0	0	0	0	NYAAPSPYV	MYCN_331	0.591	83.86	0.5	<=SB
