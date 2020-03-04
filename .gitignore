@@ -5,3 +5,5 @@
 shinyNAP.Rproj
 HLA-*.txt
 .Rproj.user
+www/
+data/
