@@ -4,4 +4,4 @@
 .Ruserdata
 shinyNAP.Rproj
 HLA-*.txt
-.Rproj.user
+*.Rproj.user
