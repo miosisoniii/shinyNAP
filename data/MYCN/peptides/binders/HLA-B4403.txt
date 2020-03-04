@@ -1,2 +1,0 @@
-pos	HLA	peptide	Core	Offset	I_pos	I_len	D_pos	D_len	iCore	Identity	X1.log50k.aff.	Affinity.nM.	X.Rank	BindLevel
-0	HLA-B4403	SELILKRCL	SELILKRCL	0	0	0	0	0	SELILKRCL	MYCN_316	0.495	236.63	0.4	<=SB
