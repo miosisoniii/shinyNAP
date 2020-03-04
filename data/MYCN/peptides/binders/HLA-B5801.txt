@@ -1,2 +1,0 @@
-pos	HLA	peptide	Core	Offset	I_pos	I_len	D_pos	D_len	iCore	Identity	X1.log50k.aff.	Affinity.nM.	X.Rank	BindLevel
-0	HLA-B5801	KATEYVHSL	KATEYVHSL	0	0	0	0	0	KATEYVHSL	MYCN_425	0.587	87.01	0.4	<=SB

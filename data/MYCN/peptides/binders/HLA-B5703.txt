@@ -1,3 +1,0 @@
-pos	HLA	peptide	Core	Offset	I_pos	I_len	D_pos	D_len	iCore	Identity	X1.log50k.aff.	Affinity.nM.	X.Rank	BindLevel
-0	HLA-B5703	STPPGEDIW	STPPGEDIW	0	0	0	0	0	STPPGEDIW	MYCN_42	0.492	244.6	0.06	<=SB
-0	HLA-B5703	EHSSEPPSW	EHSSEPPSW	0	0	0	0	0	EHSSEPPSW	MYCN_69	0.352	1103.21	0.4	<=SB
